@@ -1,99 +1,71 @@
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp, MapPin, Clock, Users, Car } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const Info = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
-      question: "AGE RESTRICTIONS",
-      answer: "AGNW Fest 2026 is open to all ages. Children under 16 must be accompanied by an adult. Under 5s enter free but still require a ticket for security purposes.",
-      icon: <Users className="w-6 h-6" />
+      question: "What are the age restrictions?",
+      answer: "AGNW Fest 2026 is open to all ages. Under 16s must be accompanied by an adult. Under 5s go free but still require a ticket."
     },
     {
-      question: "GETTING THERE",
-      answer: "The festival is easily accessible by train, bus, and car. Special shuttle services will run from major transport hubs. Full travel information and maps will be sent with your tickets.",
-      icon: <Car className="w-6 h-6" />
+      question: "How do I get there?",
+      answer: "The festival is easily accessible by train, bus, and car. Special shuttle services will run from major transport hubs."
     },
     {
-      question: "WHAT TO BRING",
-      answer: "Bring your ticket, ID, weather-appropriate clothing, and positive vibes! Full prohibited items list available on our website. No glass containers or professional cameras allowed.",
-      icon: <MapPin className="w-6 h-6" />
+      question: "What can I bring?",
+      answer: "You can bring small bags, sealed water bottles, and food. No glass, professional cameras, or illegal substances allowed."
     },
     {
-      question: "FOOD & DRINK",
-      answer: "Amazing food vendors and bars throughout the site serving everything from local street food to international cuisine. You can bring sealed water bottles and small snacks. Card payments accepted everywhere.",
-      icon: <Clock className="w-6 h-6" />
+      question: "Where can I stay?",
+      answer: "There are hotels, hostels, and camping options available. Book early as accommodation fills up quickly during festival weekend."
     },
     {
-      question: "WEATHER POLICY",
-      answer: "The festival happens rain or shine! We've got covered areas and weather protection. In case of extreme weather conditions, we'll keep you updated via email and our official social media channels.",
-      icon: <MapPin className="w-6 h-6" />
-    },
-    {
-      question: "ACCESSIBILITY",
-      answer: "We're committed to making AGNW Fest accessible to everyone. Dedicated viewing areas, accessible toilets, hearing loops, and BSL interpreters available. Contact our accessibility team for specific requirements.",
-      icon: <Users className="w-6 h-6" />
+      question: "What about accessibility?",
+      answer: "We're committed to making the festival accessible. Dedicated viewing areas, accessible toilets, and hearing loops are available."
     }
   ];
 
   return (
-    <section id="info" className="py-24 bg-gradient-to-b from-black via-purple-900/20 to-black">
+    <section id="info" className="py-24 bg-gray-100">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 bg-clip-text text-transparent">
-              FESTIVAL INFO
-            </span>
-          </h2>
-          <p className="text-2xl text-gray-300 font-bold">
-            EVERYTHING YOU NEED TO KNOW
-          </p>
-        </div>
+        <h2 className="text-6xl md:text-8xl font-black text-black text-center mb-16 tracking-tighter">
+          INFO
+        </h2>
 
-        <div className="max-w-5xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border-2 border-gray-700 rounded-2xl overflow-hidden hover:border-purple-500 transition-all duration-500 shadow-xl"
+              className="border border-gray-300 bg-white"
             >
               <button
-                className="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none group"
+                className="w-full px-6 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <div className="flex items-center space-x-4">
-                  <div className="text-purple-400 group-hover:text-pink-400 transition-colors duration-300">
-                    {faq.icon}
-                  </div>
-                  <h3 className="text-2xl font-black text-white tracking-wider group-hover:text-purple-300 transition-colors duration-300">
-                    {faq.question}
-                  </h3>
-                </div>
-                <div className="text-purple-400 group-hover:text-pink-400 transition-colors duration-300">
+                <h3 className="text-xl font-black text-black tracking-wide">
+                  {faq.question}
+                </h3>
+                <div className="text-black">
                   {openIndex === index ? (
-                    <ChevronUp className="w-8 h-8" />
+                    <ChevronUp className="w-6 h-6" />
                   ) : (
-                    <ChevronDown className="w-8 h-8" />
+                    <ChevronDown className="w-6 h-6" />
                   )}
                 </div>
               </button>
               
               {openIndex === index && (
-                <div className="px-8 pb-6 border-t border-gray-700/50">
-                  <p className="text-gray-300 leading-relaxed text-lg font-medium pt-4">
+                <div className="px-6 pb-6 border-t border-gray-200">
+                  <p className="text-gray-700 leading-relaxed pt-4">
                     {faq.answer}
                   </p>
                 </div>
               )}
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-bold inline-block">
-            📧 Still have questions? Contact our support team
-          </div>
         </div>
       </div>
     </section>
