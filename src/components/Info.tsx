@@ -1,76 +1,99 @@
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, MapPin, Clock, Users, Car } from "lucide-react";
 
 const Info = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
-      question: "Age Restrictions",
-      answer: "AGNW Fest 2026 is open to all ages. Children under 16 must be accompanied by an adult. Under 5s enter free but still require a ticket."
+      question: "AGE RESTRICTIONS",
+      answer: "AGNW Fest 2026 is open to all ages. Children under 16 must be accompanied by an adult. Under 5s enter free but still require a ticket for security purposes.",
+      icon: <Users className="w-6 h-6" />
     },
     {
-      question: "Getting There",
-      answer: "The festival is easily accessible by train, bus, and car. Special shuttle services will run from major transport hubs. Full travel information will be sent with your tickets."
+      question: "GETTING THERE",
+      answer: "The festival is easily accessible by train, bus, and car. Special shuttle services will run from major transport hubs. Full travel information and maps will be sent with your tickets.",
+      icon: <Car className="w-6 h-6" />
     },
     {
-      question: "What to Bring",
-      answer: "Bring your ticket, ID, weather-appropriate clothing, and a positive attitude! Full prohibited items list available on our FAQ page. No glass containers or professional cameras allowed."
+      question: "WHAT TO BRING",
+      answer: "Bring your ticket, ID, weather-appropriate clothing, and positive vibes! Full prohibited items list available on our website. No glass containers or professional cameras allowed.",
+      icon: <MapPin className="w-6 h-6" />
     },
     {
-      question: "Food & Drink",
-      answer: "Amazing food vendors and bars throughout the site. You can bring sealed water bottles and small snacks, but no alcohol from outside. Card payments accepted everywhere."
+      question: "FOOD & DRINK",
+      answer: "Amazing food vendors and bars throughout the site serving everything from local street food to international cuisine. You can bring sealed water bottles and small snacks. Card payments accepted everywhere.",
+      icon: <Clock className="w-6 h-6" />
     },
     {
-      question: "Weather Policy",
-      answer: "The festival happens rain or shine! In case of extreme weather, we'll keep you updated via email and social media. No refunds for weather-related issues."
+      question: "WEATHER POLICY",
+      answer: "The festival happens rain or shine! We've got covered areas and weather protection. In case of extreme weather conditions, we'll keep you updated via email and our official social media channels.",
+      icon: <MapPin className="w-6 h-6" />
     },
     {
-      question: "Accessibility",
-      answer: "We're committed to making the festival accessible to everyone. Dedicated viewing areas, accessible toilets, and assistance available. Contact us for specific requirements."
+      question: "ACCESSIBILITY",
+      answer: "We're committed to making AGNW Fest accessible to everyone. Dedicated viewing areas, accessible toilets, hearing loops, and BSL interpreters available. Contact our accessibility team for specific requirements.",
+      icon: <Users className="w-6 h-6" />
     }
   ];
 
   return (
-    <section id="info" className="py-20 bg-gradient-to-b from-black to-purple-900/20">
+    <section id="info" className="py-24 bg-gradient-to-b from-black via-purple-900/20 to-black">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent">
+        <div className="text-center mb-20">
+          <h2 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter">
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 bg-clip-text text-transparent">
               FESTIVAL INFO
             </span>
           </h2>
-          <p className="text-xl text-gray-300">
-            Everything you need to know
+          <p className="text-2xl text-gray-300 font-bold">
+            EVERYTHING YOU NEED TO KNOW
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-5xl mx-auto space-y-6">
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/20 rounded-xl overflow-hidden hover:border-purple-400/50 transition-all duration-300"
+              className="bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border-2 border-gray-700 rounded-2xl overflow-hidden hover:border-purple-500 transition-all duration-500 shadow-xl"
             >
               <button
-                className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                className="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none group"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <h3 className="text-xl font-bold text-white">{faq.question}</h3>
-                {openIndex === index ? (
-                  <ChevronUp className="w-6 h-6 text-purple-400" />
-                ) : (
-                  <ChevronDown className="w-6 h-6 text-purple-400" />
-                )}
+                <div className="flex items-center space-x-4">
+                  <div className="text-purple-400 group-hover:text-pink-400 transition-colors duration-300">
+                    {faq.icon}
+                  </div>
+                  <h3 className="text-2xl font-black text-white tracking-wider group-hover:text-purple-300 transition-colors duration-300">
+                    {faq.question}
+                  </h3>
+                </div>
+                <div className="text-purple-400 group-hover:text-pink-400 transition-colors duration-300">
+                  {openIndex === index ? (
+                    <ChevronUp className="w-8 h-8" />
+                  ) : (
+                    <ChevronDown className="w-8 h-8" />
+                  )}
+                </div>
               </button>
               
               {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                <div className="px-8 pb-6 border-t border-gray-700/50">
+                  <p className="text-gray-300 leading-relaxed text-lg font-medium pt-4">
+                    {faq.answer}
+                  </p>
                 </div>
               )}
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-bold inline-block">
+            📧 Still have questions? Contact our support team
+          </div>
         </div>
       </div>
     </section>
