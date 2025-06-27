@@ -12,7 +12,7 @@ const Info = () => {
     },
     {
       question: "How do I get there?",
-      answer: "The festival is easily accessible by train, bus, and car. Special shuttle services will run from major transport hubs."
+      answer: "The festival is easily accessible by train, bus, and car. Special shuttle services will run from major transport hubs in Glasgow."
     },
     {
       question: "What can I bring?",
@@ -29,23 +29,31 @@ const Info = () => {
   ];
 
   return (
-    <section id="info" className="py-24 bg-gray-100">
-      <div className="container mx-auto px-4">
-        <h2 className="text-6xl md:text-8xl font-black text-black text-center mb-16 tracking-tighter">
+    <section id="info" className="py-32 bg-white relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-3"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1920&h=1080&fit=crop')`,
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-black text-center mb-20 tracking-tighter">
           INFO
         </h2>
 
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-2">
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="border border-gray-300 bg-white"
+              className="border-2 border-black bg-white"
             >
               <button
-                className="w-full px-6 py-6 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50"
+                className="w-full px-8 py-8 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors duration-300"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <h3 className="text-xl font-black text-black tracking-wide">
+                <h3 className="text-lg md:text-xl font-black text-black tracking-wide">
                   {faq.question}
                 </h3>
                 <div className="text-black">
@@ -58,8 +66,8 @@ const Info = () => {
               </button>
               
               {openIndex === index && (
-                <div className="px-6 pb-6 border-t border-gray-200">
-                  <p className="text-gray-700 leading-relaxed pt-4">
+                <div className="px-8 pb-8 border-t-2 border-black">
+                  <p className="text-gray-800 leading-relaxed pt-6 font-medium">
                     {faq.answer}
                   </p>
                 </div>

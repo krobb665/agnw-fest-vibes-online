@@ -18,21 +18,28 @@ const Lineup = () => {
   ];
 
   return (
-    <section id="lineup" className="py-24 bg-black text-center">
-      <div className="container mx-auto px-4">
+    <section id="lineup" className="py-32 bg-white text-center relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1500673922987-e212871fec22?w=1920&h=1080&fit=crop')`,
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Title */}
-        <h2 className="text-6xl md:text-8xl font-black text-white mb-16 tracking-tighter">
+        <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-black mb-20 tracking-tighter">
           LINE-UP
         </h2>
         
         {/* Headliners */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-black text-white mb-12 tracking-wider">HEADLINERS</h3>
-          <div className="space-y-6">
+        <div className="mb-24">
+          <div className="space-y-8">
             {headliners.map((artist, index) => (
               <div 
                 key={artist}
-                className="text-4xl md:text-6xl font-black text-white tracking-wider hover:text-gray-300 transition-colors duration-300"
+                className="text-3xl md:text-5xl lg:text-6xl font-black text-black tracking-[0.1em] hover:opacity-70 transition-opacity duration-300 cursor-pointer"
               >
                 {artist}
               </div>
@@ -41,17 +48,17 @@ const Lineup = () => {
         </div>
 
         {/* Stages */}
-        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-16 max-w-7xl mx-auto">
           {stages.map((stage) => (
             <div key={stage.name} className="text-center">
-              <h3 className="text-2xl font-black text-white mb-8 tracking-wider border-b-2 border-white pb-4">
+              <h3 className="text-xl md:text-2xl font-black text-black mb-8 tracking-[0.2em] border-b-4 border-black pb-4">
                 {stage.name}
               </h3>
               <div className="space-y-4">
                 {stage.artists.map((artist) => (
                   <div 
                     key={artist}
-                    className="text-lg font-bold text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
+                    className="text-base md:text-lg font-bold text-gray-800 hover:text-black transition-colors duration-300 cursor-pointer tracking-wide"
                   >
                     {artist}
                   </div>
