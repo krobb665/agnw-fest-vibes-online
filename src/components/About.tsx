@@ -1,3 +1,4 @@
+
 import { FaInstagram, FaTwitter, FaTiktok, FaFacebook, FaYoutube } from 'react-icons/fa';
 import { SiApplemusic, SiSpotify } from 'react-icons/si';
 
@@ -64,57 +65,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-black border-t border-gray-900 py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <p className="text-gray-400 text-sm">© 2026 AGNW Fest</p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-4 mb-8 text-xs text-gray-500">
-            <a href="#" className="hover:text-yellow-400 transition-colors">Terms of Use</a>
-            <span>•</span>
-            <a href="#" className="hover:text-yellow-400 transition-colors">Privacy Policy</a>
-            <span>•</span>
-            <a href="#" className="hover:text-yellow-400 transition-colors">Drink Aware</a>
-            <span>•</span>
-            <a href="#" className="hover:text-yellow-400 transition-colors">Accessibility</a>
-            <span>•</span>
-            <a href="#" className="hover:text-yellow-400 transition-colors">Contact Us</a>
-          </div>
-          
-          <div className="flex justify-center space-x-6 mb-8">
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-              <FaInstagram size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-              <FaTwitter size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-              <FaTiktok size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-              <FaFacebook size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-              <FaYoutube size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-              <SiSpotify size={20} />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-              <SiApplemusic size={20} />
-            </a>
-          </div>
-          
-          <div className="text-center">
-            <button className="text-gray-500 text-xs hover:text-yellow-400 transition-colors">
-              Manage my cookies
-            </button>
-          </div>
-        </div>
-      </footer>
     </section>
   );
 };

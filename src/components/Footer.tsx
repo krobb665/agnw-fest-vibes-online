@@ -1,4 +1,7 @@
 
+import { FaInstagram, FaTwitter, FaTiktok, FaFacebook, FaYoutube } from 'react-icons/fa';
+import { SiApplemusic, SiSpotify } from 'react-icons/si';
+
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-16 text-center">
@@ -25,6 +28,30 @@ const Footer = () => {
           <a href="#" className="hover:text-gray-300 transition-colors">Contact Us</a>
           <span className="text-gray-500">•</span>
           <a href="#" className="hover:text-gray-300 transition-colors">Manage my cookies</a>
+        </div>
+        
+        <div className="flex justify-center space-x-6 mb-8">
+          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+            <FaInstagram size={20} />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+            <FaTwitter size={20} />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+            <FaTiktok size={20} />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+            <FaFacebook size={20} />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+            <FaYoutube size={20} />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+            <SiSpotify size={20} />
+          </a>
+          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+            <SiApplemusic size={20} />
+          </a>
         </div>
       </div>
     </footer>
