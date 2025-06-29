@@ -8,7 +8,7 @@ const Footer = () => {
         </div>
         
         <div className="text-xl font-bold mb-8 tracking-wider">
-          30TH MAY 2026 • GLASGOW GREEN
+          30TH MAY 2026 • AGNEW PARK
         </div>
         
         <div className="flex justify-center space-x-8 mb-12 text-sm font-bold tracking-wider">
