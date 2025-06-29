@@ -13,9 +13,10 @@ const Hero = () => {
           loop 
           playsInline 
           className="w-full h-full object-cover opacity-70"
-          poster="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1920&h=1080&fit=crop"
+          poster="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1920&h=1080&fit=crop"
         >
-          <source src="https://player.vimeo.com/external/449759244.sd.mp4?s=d5f3da46ddc17aa69a7de84f159db53d5b06bea6&profile_id=165&oauth2_token_id=57447761" type="video/mp4" />
+          <source src="https://sample-videos.com/zip/10/mp4/720/SampleVideo_720x480_1mb.mp4" type="video/mp4" />
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
         </video>
       </div>
       
@@ -69,13 +70,13 @@ const Hero = () => {
               className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
               onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              TICKETS
+              TICKETS TO BE ANNOUNCED
             </button>
             <button 
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
               onClick={() => document.getElementById('lineup')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              LINE-UP
+              LINE-UP TO BE ANNOUNCED
             </button>
           </div>
         </div>
