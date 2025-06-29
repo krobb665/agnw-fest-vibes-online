@@ -11,15 +11,21 @@ const Footer = () => {
           30TH MAY 2026 • AGNEW PARK
         </div>
         
-        <div className="flex justify-center space-x-8 mb-12 text-sm font-bold tracking-wider">
-          <a href="#" className="hover:text-gray-300 transition-colors">PRIVACY</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">TERMS</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">ACCESSIBILITY</a>
+        <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm font-bold tracking-wider">
+          <a href="#" className="hover:text-gray-300 transition-colors">© 2026 AGNW Fest</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Terms of Use</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Drink Aware</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Accessibility</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Contact Us</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Manage my cookies</a>
         </div>
-
-        <p className="text-gray-400 text-sm">
-          © 2026 AGNW Fest. All rights reserved.
-        </p>
       </div>
     </footer>
   );

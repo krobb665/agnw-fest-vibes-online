@@ -48,19 +48,19 @@ const Hero = () => {
         
         {/* Main Content */}
         <div className="max-w-6xl mx-auto">
-          {/* Dates */}
-          <div className="text-yellow-400 text-lg md:text-2xl font-bold tracking-widest mb-8">
-            30 • 31 MAY 2026
-          </div>
-          
           {/* Main Title */}
           <h1 className="text-7xl md:text-[180px] lg:text-[220px] font-black leading-none tracking-tight text-white mb-4">
             AGNW FEST
           </h1>
           
           {/* Location */}
-          <div className="text-white text-xl md:text-2xl font-bold tracking-widest mb-12">
-            AGNEW PARK • GLASGOW • SCOTLAND
+          <div className="text-white text-xl md:text-2xl font-bold tracking-widest mb-4">
+            AGNEW PARK • STRANRAER • SCOTLAND
+          </div>
+          
+          {/* Dates */}
+          <div className="text-yellow-400 text-lg md:text-2xl font-bold tracking-widest mb-12">
+            30 • 31 MAY 2026
           </div>
           
           {/* CTA Buttons */}
