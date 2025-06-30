@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaMapMarkerAlt, FaBus, FaHotel, FaWheelchair, FaQuestionCircle } from "react-icons/fa";
 
@@ -35,12 +36,12 @@ const Info = () => {
             <p className="text-gray-300">The Ivy House Hotel, North West Castle Hotel, and several boutique accommodations in Stranraer town centre. All within walking distance of the festival site.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">CAMPING</h4>
-            <p className="text-gray-300">Official festival camping at Castle Kennedy Gardens (5 miles) with shuttle service. Local campsites at Aird Donald Caravan Park and other nearby locations.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">B&BS & GUESTHOUSES</h4>
+            <p className="text-gray-300">Various bed & breakfasts and guesthouses available throughout Stranraer and surrounding areas. Book early as accommodation fills up quickly during festival time.</p>
           </div>
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">WIDER AREA</h4>
-            <p className="text-gray-300">Portpatrick (8 miles) offers stunning coastal accommodation. Newton Stewart and Wigtown also provide excellent bases with regular transport links.</p>
+            <p className="text-gray-300">Portpatrick (8 miles) offers stunning coastal accommodation. Newton Stewart and Wigtown also provide excellent bases with regular transport links to Stranraer.</p>
           </div>
         </div>
       )
@@ -52,15 +53,15 @@ const Info = () => {
         <div className="space-y-6">
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">VENUE ACCESS</h4>
-            <p className="text-gray-300">Agnew Park has level access throughout with dedicated viewing platforms for wheelchair users. Accessible toilets and charging points for mobility aids available.</p>
+            <p className="text-gray-300">Agnew Park provides accessible pathways and designated viewing areas for wheelchair users. Accessible toilet facilities are located throughout the site.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">TRANSPORT</h4>
-            <p className="text-gray-300">Accessible shuttle services from Stranraer station and town centre. Blue badge parking spaces reserved close to venue entrances.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">TRANSPORT & PARKING</h4>
+            <p className="text-gray-300">Accessible transport options available from Stranraer station. Blue badge parking spaces reserved near venue entrances with level access to the festival site.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">SUPPORT</h4>
-            <p className="text-gray-300">Personal assistants enter free. BSL interpreters available on request. Contact our access team for detailed accessibility information.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">ASSISTANCE</h4>
+            <p className="text-gray-300">Personal assistants enter free of charge. Please contact our access team in advance to discuss specific requirements and arrange any additional support needed.</p>
           </div>
         </div>
       )
