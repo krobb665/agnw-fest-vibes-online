@@ -12,15 +12,15 @@ const Info = () => {
         <div className="space-y-6">
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">BY TRAIN</h4>
-            <p className="text-gray-300">Stranraer train station is within a 10-minute walk from the festival site. Special shuttle buses will run from the station throughout the day.</p>
+            <p className="text-gray-300">Stranraer railway station is just a 10-minute walk from Agnew Park. Direct services run from Glasgow Central (3.5 hours) and connects from major Scottish cities. Special shuttle buses will run from the station throughout the festival day.</p>
           </div>
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">BY CAR</h4>
-            <p className="text-gray-300">Limited parking is available at the festival site. We recommend using public transport. Pre-book your parking pass online.</p>
+            <p className="text-gray-300">Stranraer is easily accessible via the A77 from Glasgow (2.5 hours) or A75 from Edinburgh (3 hours). Limited parking available at Agnew Park - pre-booking essential. Alternative parking at Stranraer town centre with shuttle service.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">BY BUS</h4>
-            <p className="text-gray-300">Multiple bus routes serve the festival area. Additional services will be running on the festival day.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">BY FERRY</h4>
+            <p className="text-gray-300">Stena Line ferries from Belfast arrive at Cairnryan (7 miles from Stranraer). Special festival shuttle buses will connect ferry terminals to the venue.</p>
           </div>
         </div>
       )
@@ -31,16 +31,16 @@ const Info = () => {
       content: (
         <div className="space-y-6">
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">HOTELS</h4>
-            <p className="text-gray-300">We've partnered with local hotels to offer special rates for festival-goers. Book early as rooms sell out quickly.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">STRANRAER HOTELS</h4>
+            <p className="text-gray-300">The Ivy House Hotel, North West Castle Hotel, and several boutique accommodations in Stranraer town centre. All within walking distance of the festival site.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">B&BS</h4>
-            <p className="text-gray-300">Stranraer has many charming bed & breakfasts perfect for a festival weekend getaway.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">CAMPING</h4>
+            <p className="text-gray-300">Official festival camping at Castle Kennedy Gardens (5 miles) with shuttle service. Local campsites at Aird Donald Caravan Park and other nearby locations.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">AIRBNB</h4>
-            <p className="text-gray-300">Many local residents offer their homes during the festival. Book early for the best selection and prices.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">WIDER AREA</h4>
+            <p className="text-gray-300">Portpatrick (8 miles) offers stunning coastal accommodation. Newton Stewart and Wigtown also provide excellent bases with regular transport links.</p>
           </div>
         </div>
       )
@@ -51,16 +51,16 @@ const Info = () => {
       content: (
         <div className="space-y-6">
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">VIEWING PLATFORMS</h4>
-            <p className="text-gray-300">Dedicated accessible viewing platforms are available at all stages. These are available on a first-come, first-served basis.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">VENUE ACCESS</h4>
+            <p className="text-gray-300">Agnew Park has level access throughout with dedicated viewing platforms for wheelchair users. Accessible toilets and charging points for mobility aids available.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">PERSONAL ASSISTANTS</h4>
-            <p className="text-gray-300">If you require a personal assistant, they can enter the festival for free. Please contact our access team in advance.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">TRANSPORT</h4>
+            <p className="text-gray-300">Accessible shuttle services from Stranraer station and town centre. Blue badge parking spaces reserved close to venue entrances.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">SERVICES</h4>
-            <p className="text-gray-300">Accessible toilets, charging points for electric wheelchairs, and assistance dogs are welcome throughout the site.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">SUPPORT</h4>
+            <p className="text-gray-300">Personal assistants enter free. BSL interpreters available on request. Contact our access team for detailed accessibility information.</p>
           </div>
         </div>
       )
@@ -71,16 +71,16 @@ const Info = () => {
       content: (
         <div className="space-y-6">
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">AGE RESTRICTIONS</h4>
-            <p className="text-gray-300">All ages are welcome. Under 16s must be accompanied by an adult (18+). ID may be required for age verification.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">WEATHER IN STRANRAER</h4>
+            <p className="text-gray-300">May weather in Stranraer averages 12-16°C. Pack layers, waterproofs, and comfortable footwear. The park can get muddy after rain!</p>
+          </div>
+          <div>
+            <h4 className="text-yellow-400 font-bold mb-2">LOCAL AMENITIES</h4>
+            <p className="text-gray-300">Stranraer town centre has supermarkets, pharmacies, and cash machines. The festival site has food vendors, bars, and merchandise stalls.</p>
           </div>
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">WHAT TO BRING</h4>
-            <p className="text-gray-300">Small bags (A4 size or smaller), empty reusable water bottles, sun protection, and rain gear. See our full list of prohibited items on our website.</p>
-          </div>
-          <div>
-            <h4 className="text-yellow-400 font-bold mb-2">LOST & FOUND</h4>
-            <p className="text-gray-300">Visit the information desk or check our website after the festival for lost items.</p>
+            <p className="text-gray-300">Small bags only (A4 size). Reusable water bottles welcome. No glass, professional cameras, or outside alcohol. Full prohibited items list on our website.</p>
           </div>
         </div>
       )
