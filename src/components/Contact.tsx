@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaPaperPlane, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
+import { FaEnvelope, FaPaperPlane, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Contact = () => {
@@ -187,36 +187,9 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Email</h4>
-                    <a href="mailto:info@agnwfestival.com" className="text-white hover:text-yellow-400 transition-colors">
-                      info@agnwfestival.com
+                    <a href="mailto:info@agnwfest.co.uk" className="text-white hover:text-yellow-400 transition-colors">
+                      info@agnwfest.co.uk
                     </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-yellow-500/10 p-3 rounded-lg text-yellow-500">
-                    <FaPhoneAlt size={18} />
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Phone</h4>
-                    <a href="tel:+441234567890" className="text-white hover:text-yellow-400 transition-colors">
-                      +44 123 456 7890
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-yellow-500/10 p-3 rounded-lg text-yellow-500">
-                    <FaMapMarkerAlt size={20} />
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Location</h4>
-                    <p className="text-white">
-                      Glasgow Green<br />
-                      Templeton Street<br />
-                      Glasgow, G40 1HB<br />
-                      United Kingdom
-                    </p>
                   </div>
                 </div>
               </div>
@@ -253,23 +226,15 @@ const Contact = () => {
               <h3 className="text-2xl font-black mb-6 text-yellow-500">FESTIVAL HOURS</h3>
               
               <div className="space-y-4">
-                <div className="flex justify-between border-b border-gray-800 pb-3">
-                  <span className="text-gray-400">Friday</span>
-                  <span className="font-medium">12:00 PM - 11:00 PM</span>
-                </div>
-                <div className="flex justify-between border-b border-gray-800 pb-3">
-                  <span className="text-gray-400">Saturday</span>
-                  <span className="font-medium">11:00 AM - 11:00 PM</span>
-                </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Sunday</span>
-                  <span className="font-medium">11:00 AM - 10:00 PM</span>
+                  <span className="text-gray-400">30 May 2026</span>
+                  <span className="font-medium">12:00 PM - 11:00 PM</span>
                 </div>
               </div>
               
               <div className="mt-6 pt-6 border-t border-gray-800">
                 <p className="text-sm text-gray-400">
-                  * Gates open at 12:00 PM on Friday and 11:00 AM on Saturday & Sunday. Last entry at 9:00 PM each day.
+                  * Gates open at 12:00 PM. Last entry at 9:00 PM.
                 </p>
               </div>
             </div>

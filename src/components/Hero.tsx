@@ -8,7 +8,7 @@ const Hero = () => {
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <iframe
-          src="https://www.youtube.com/embed/Gqlcqe24ocU?autoplay=1&mute=1&loop=1&playlist=Gqlcqe24ocU&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
+          src="https://www.youtube.com/embed/Gqlcqe24ocU?autoplay=1&mute=1&loop=1&playlist=Gqlcqe24ocU&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&start=7"
           className="w-full h-full object-cover opacity-70 pointer-events-none"
           style={{ 
             transform: 'scale(1.2)',
@@ -50,7 +50,7 @@ const Hero = () => {
         {/* Main Content */}
         <div className="max-w-6xl mx-auto">
           {/* Main Title */}
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight text-white mb-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight text-white mb-4">
             AGNW FEST
           </h1>
           
