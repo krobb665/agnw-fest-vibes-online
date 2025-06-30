@@ -84,7 +84,7 @@ const Navbar = () => {
               onClick={() => scrollToSection('tickets')}
               className="ml-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors"
             >
-              TICKETS TO BE ANNOUNCED
+              TICKETS NOT YET ON SALE
             </button>
           </div>
 
@@ -117,7 +117,7 @@ const Navbar = () => {
                   onClick={() => scrollToSection('tickets')}
                   className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 text-sm uppercase tracking-wider transition-colors"
                 >
-                  TICKETS TO BE ANNOUNCED
+                  TICKETS NOT YET ON SALE
                 </button>
               </div>
             </SheetContent>

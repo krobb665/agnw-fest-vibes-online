@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaMapMarkerAlt, FaBus, FaHotel, FaWheelchair, FaQuestionCircle } from "react-icons/fa";
 
@@ -13,15 +12,15 @@ const Info = () => {
         <div className="space-y-6">
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">BY TRAIN</h4>
-            <p className="text-gray-300">Glasgow Central and Queen Street stations are both within a 15-minute taxi ride from the festival site. Special shuttle buses will run from both stations.</p>
+            <p className="text-gray-300">Stranraer train station is within a 10-minute walk from the festival site. Special shuttle buses will run from the station throughout the day.</p>
           </div>
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">BY CAR</h4>
-            <p className="text-gray-300">Limited parking is available at the festival site. We recommend using public transport or the official festival car parks. Pre-book your parking pass online.</p>
+            <p className="text-gray-300">Limited parking is available at the festival site. We recommend using public transport. Pre-book your parking pass online.</p>
           </div>
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">BY BUS</h4>
-            <p className="text-gray-300">Multiple bus routes serve the festival area. Night buses will be running after the festival ends each night.</p>
+            <p className="text-gray-300">Multiple bus routes serve the festival area. Additional services will be running on the festival day.</p>
           </div>
         </div>
       )
@@ -36,8 +35,8 @@ const Info = () => {
             <p className="text-gray-300">We've partnered with local hotels to offer special rates for festival-goers. Book early as rooms sell out quickly.</p>
           </div>
           <div>
-            <h4 className="text-yellow-400 font-bold mb-2">CAMPING</h4>
-            <p className="text-gray-300">On-site camping is available with various options from basic pitches to luxury pre-pitched tents. Camping tickets must be purchased in advance.</p>
+            <h4 className="text-yellow-400 font-bold mb-2">B&BS</h4>
+            <p className="text-gray-300">Stranraer has many charming bed & breakfasts perfect for a festival weekend getaway.</p>
           </div>
           <div>
             <h4 className="text-yellow-400 font-bold mb-2">AIRBNB</h4>

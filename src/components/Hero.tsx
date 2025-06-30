@@ -15,8 +15,8 @@ const Hero = () => {
           className="w-full h-full object-cover opacity-70"
           poster="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1920&h=1080&fit=crop"
         >
-          <source src="https://sample-videos.com/zip/10/mp4/720/SampleVideo_720x480_1mb.mp4" type="video/mp4" />
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/2022395/2022395-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/1721294/1721294-hd_1920_1080_30fps.mp4" type="video/mp4" />
         </video>
       </div>
       
@@ -61,7 +61,7 @@ const Hero = () => {
           
           {/* Dates */}
           <div className="text-yellow-400 text-lg md:text-2xl font-bold tracking-widest mb-12">
-            30 • 31 MAY 2026
+            30 MAY 2026
           </div>
           
           {/* CTA Buttons */}
@@ -70,7 +70,7 @@ const Hero = () => {
               className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
               onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              TICKETS TO BE ANNOUNCED
+              TICKETS NOT YET ON SALE
             </button>
             <button 
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
