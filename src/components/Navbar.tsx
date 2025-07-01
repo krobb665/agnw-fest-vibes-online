@@ -61,9 +61,13 @@ const Navbar = () => {
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('home')}
-            className="text-2xl md:text-3xl font-black text-white tracking-tight hover:text-blue-400 transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            AGNW FEST
+            <img 
+              src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
+              alt="AGNW FEST 2026" 
+              className="h-12 md:h-16 w-auto"
+            />
           </button>
 
           {/* Desktop Menu */}
