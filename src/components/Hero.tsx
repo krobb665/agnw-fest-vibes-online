@@ -27,22 +27,22 @@ const Hero = () => {
       <div className="relative z-10 text-center w-full px-4">
         {/* Social Icons */}
         <div className="absolute top-8 right-8 hidden md:flex flex-col space-y-4">
-          <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
             <FaInstagram size={20} />
           </a>
-          <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
             <FaTwitter size={20} />
           </a>
-          <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
             <FaTiktok size={20} />
           </a>
-          <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
             <FaYoutube size={20} />
           </a>
-          <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
             <SiSpotify size={20} />
           </a>
-          <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
             <SiApplemusic size={20} />
           </a>
         </div>
@@ -60,14 +60,14 @@ const Hero = () => {
           </div>
           
           {/* Dates */}
-          <div className="text-yellow-400 text-lg md:text-2xl font-bold tracking-widest mb-12">
+          <div className="text-cyan-400 text-lg md:text-2xl font-bold tracking-widest mb-12">
             30 MAY 2026
           </div>
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mt-16">
             <button 
-              className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
+              className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
               onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
             >
               TICKETS NOT YET ON SALE

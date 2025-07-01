@@ -60,7 +60,7 @@ const Navbar = () => {
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('home')}
-            className="text-2xl md:text-3xl font-black text-white tracking-tight hover:text-yellow-400 transition-colors"
+            className="text-2xl md:text-3xl font-black text-white tracking-tight hover:text-cyan-400 transition-colors"
           >
             AGNW FEST
           </button>
@@ -73,8 +73,8 @@ const Navbar = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
                   activeSection === item.id 
-                    ? 'text-yellow-400 border-b-2 border-yellow-400' 
-                    : 'text-white hover:text-yellow-400'
+                    ? 'text-cyan-400 border-b-2 border-cyan-400' 
+                    : 'text-white hover:text-cyan-400'
                 }`}
               >
                 {item.label}
@@ -82,7 +82,7 @@ const Navbar = () => {
             ))}
             <button 
               onClick={() => scrollToSection('tickets')}
-              className="ml-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors"
+              className="ml-4 bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors"
             >
               TICKETS NOT YET ON SALE
             </button>
@@ -92,7 +92,7 @@ const Navbar = () => {
           <Sheet>
             <SheetTrigger asChild>
               <button
-                className="md:hidden text-white p-2 hover:text-yellow-400 transition-colors"
+                className="md:hidden text-white p-2 hover:text-cyan-400 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu size={24} />
@@ -106,8 +106,8 @@ const Navbar = () => {
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
                       activeSection === item.id 
-                        ? 'text-yellow-400 bg-gray-900' 
-                        : 'text-white hover:text-yellow-400 hover:bg-gray-900/50'
+                        ? 'text-cyan-400 bg-gray-900' 
+                        : 'text-white hover:text-cyan-400 hover:bg-gray-900/50'
                     }`}
                   >
                     {item.label}
@@ -115,7 +115,7 @@ const Navbar = () => {
                 ))}
                 <button 
                   onClick={() => scrollToSection('tickets')}
-                  className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 text-sm uppercase tracking-wider transition-colors"
+                  className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-3 px-6 text-sm uppercase tracking-wider transition-colors"
                 >
                   TICKETS NOT YET ON SALE
                 </button>

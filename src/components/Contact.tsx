@@ -62,13 +62,13 @@ const Contact = () => {
   return (
     <section id="contact" className="relative bg-black text-white py-24 overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-yellow-500/5 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-cyan-500/5 to-transparent"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-600">
               CONTACT
             </span>
           </h2>
@@ -87,7 +87,7 @@ const Contact = () => {
             className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800 shadow-2xl"
           >
             <h3 className="text-2xl font-black mb-6 flex items-center">
-              <FaEnvelope className="mr-3 text-yellow-500" />
+              <FaEnvelope className="mr-3 text-cyan-500" />
               SEND US A MESSAGE
             </h3>
             
@@ -102,7 +102,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full bg-gray-800/50 border-2 ${formErrors.name ? 'border-red-500' : 'border-gray-700 focus:border-yellow-500'} rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/30 transition-all`}
+                  className={`w-full bg-gray-800/50 border-2 ${formErrors.name ? 'border-red-500' : 'border-gray-700 focus:border-cyan-500'} rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 transition-all`}
                   placeholder="Enter your name"
                 />
                 {formErrors.name && (
@@ -120,7 +120,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full bg-gray-800/50 border-2 ${formErrors.email ? 'border-red-500' : 'border-gray-700 focus:border-yellow-500'} rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/30 transition-all`}
+                  className={`w-full bg-gray-800/50 border-2 ${formErrors.email ? 'border-red-500' : 'border-gray-700 focus:border-cyan-500'} rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 transition-all`}
                   placeholder="your.email@example.com"
                 />
                 {formErrors.email && (
@@ -138,7 +138,7 @@ const Contact = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className={`w-full bg-gray-800/50 border-2 ${formErrors.message ? 'border-red-500' : 'border-gray-700 focus:border-yellow-500'} rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/30 transition-all resize-none`}
+                  className={`w-full bg-gray-800/50 border-2 ${formErrors.message ? 'border-red-500' : 'border-gray-700 focus:border-cyan-500'} rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 transition-all resize-none`}
                   placeholder="How can we help you?"
                 ></textarea>
                 {formErrors.message && (
@@ -149,7 +149,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-yellow-500/20 transition-all duration-300 flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-black font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {isSubmitting ? (
                   <>
@@ -178,16 +178,16 @@ const Contact = () => {
             className="space-y-8"
           >
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-xl border border-gray-800">
-              <h3 className="text-2xl font-black mb-6 text-yellow-500">CONTACT INFORMATION</h3>
+              <h3 className="text-2xl font-black mb-6 text-cyan-500">CONTACT INFORMATION</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-yellow-500/10 p-3 rounded-lg text-yellow-500">
+                  <div className="flex-shrink-0 bg-cyan-500/10 p-3 rounded-lg text-cyan-500">
                     <FaEnvelope size={20} />
                   </div>
                   <div className="ml-4">
                     <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Email</h4>
-                    <a href="mailto:info@agnwfest.co.uk" className="text-white hover:text-yellow-400 transition-colors">
+                    <a href="mailto:info@agnwfest.co.uk" className="text-white hover:text-cyan-400 transition-colors">
                       info@agnwfest.co.uk
                     </a>
                   </div>
@@ -199,21 +199,21 @@ const Contact = () => {
                 <div className="flex space-x-4">
                   <a 
                     href="#" 
-                    className="w-12 h-12 rounded-full bg-gray-800 hover:bg-yellow-500 text-white flex items-center justify-center transition-colors"
+                    className="w-12 h-12 rounded-full bg-gray-800 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors"
                     aria-label="Instagram"
                   >
                     <FaInstagram size={20} />
                   </a>
                   <a 
                     href="#" 
-                    className="w-12 h-12 rounded-full bg-gray-800 hover:bg-yellow-500 text-white flex items-center justify-center transition-colors"
+                    className="w-12 h-12 rounded-full bg-gray-800 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors"
                     aria-label="Twitter"
                   >
                     <FaTwitter size={20} />
                   </a>
                   <a 
                     href="#" 
-                    className="w-12 h-12 rounded-full bg-gray-800 hover:bg-yellow-500 text-white flex items-center justify-center transition-colors"
+                    className="w-12 h-12 rounded-full bg-gray-800 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors"
                     aria-label="Facebook"
                   >
                     <FaFacebookF size={20} />
@@ -223,7 +223,7 @@ const Contact = () => {
             </div>
             
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-xl border border-gray-800">
-              <h3 className="text-2xl font-black mb-6 text-yellow-500">FESTIVAL HOURS</h3>
+              <h3 className="text-2xl font-black mb-6 text-cyan-500">FESTIVAL HOURS</h3>
               
               <div className="space-y-4">
                 <div className="flex justify-between">

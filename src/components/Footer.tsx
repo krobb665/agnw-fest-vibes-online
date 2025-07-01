@@ -31,25 +31,25 @@ const Footer = () => {
         </div>
         
         <div className="flex justify-center space-x-6 mb-8">
-          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
             <FaInstagram size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
             <FaTwitter size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
             <FaTiktok size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
             <FaFacebook size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
             <FaYoutube size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
             <SiSpotify size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
+          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
             <SiApplemusic size={20} />
           </a>
         </div>

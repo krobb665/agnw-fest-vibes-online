@@ -5,13 +5,13 @@ const Lineup = () => {
   return (
     <section id="lineup" className="relative bg-black text-white py-20 overflow-hidden">
       {/* Diagonal background element */}
-      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-yellow-500/5 to-transparent transform rotate-6 origin-top-right -mr-1/4 -mt-32"></div>
+      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-cyan-500/5 to-transparent transform rotate-6 origin-top-right -mr-1/4 -mt-32"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-600">
               LINE-UP
             </span>
           </h2>
@@ -21,7 +21,7 @@ const Lineup = () => {
         </div>
 
         {/* To Be Announced Banner */}
-        <div className="mb-24 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black p-12 rounded-lg text-center">
+        <div className="mb-24 bg-gradient-to-r from-cyan-400 to-cyan-600 text-black p-12 rounded-lg text-center">
           <h3 className="text-3xl md:text-5xl font-black mb-6">LINE-UP TO BE ANNOUNCED</h3>
           <p className="text-lg md:text-xl mb-8">We're working on bringing you an incredible lineup of artists. Stay tuned for exciting announcements!</p>
           <button className="bg-black text-white hover:bg-gray-900 px-8 py-4 font-bold uppercase tracking-wider text-sm transition-colors rounded">
