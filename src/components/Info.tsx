@@ -1,6 +1,7 @@
 
 import { useState } from "react";
-import { FaChevronDown, FaChevronUp, FaMapMarkerAlt, FaBus, FaHotel, FaWheelchair, FaQuestionCircle } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaBus, FaHotel, FaWheelchair, FaQuestionCircle } from "react-icons/fa";
+import InteractiveFestivalMap from './InteractiveFestivalMap';
 
 const Info = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -133,18 +134,9 @@ const Info = () => {
                 {infoSections[openIndex || 0].content}
               </div>
               
-              {/* Right side - Map or Image */}
-              <div className="bg-gray-800 rounded-lg overflow-hidden">
-                <div className="aspect-w-16 aspect-h-9 w-full h-full bg-gray-700 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <FaMapMarkerAlt className="text-cyan-400 text-5xl mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-2">FESTIVAL MAP</h3>
-                    <p className="text-gray-400 mb-4">Coming soon - check back closer to the event</p>
-                    <button className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-2 px-6 rounded text-sm uppercase tracking-wider transition-colors">
-                      DOWNLOAD MAP
-                    </button>
-                  </div>
-                </div>
+              {/* Right side - Interactive Map */}
+              <div>
+                <InteractiveFestivalMap />
               </div>
             </div>
             
