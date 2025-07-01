@@ -7,9 +7,9 @@ import FestivalTimeline from './FestivalTimeline';
 
 const About = () => {
   const festivalStats = [
-    { icon: <FaUsers className="text-4xl text-cyan-400" />, number: "10,000+", label: "Expected Attendees" },
-    { icon: <FaMusic className="text-4xl text-cyan-400" />, number: "50+", label: "Artists & Bands" },
-    { icon: <FaMapMarkerAlt className="text-4xl text-cyan-400" />, number: "1", label: "Incredible Day" }
+    { icon: <FaUsers className="text-4xl text-blue-400" />, number: "10,000+", label: "Expected Attendees" },
+    { icon: <FaMusic className="text-4xl text-blue-400" />, number: "50+", label: "Artists & Bands" },
+    { icon: <FaMapMarkerAlt className="text-4xl text-blue-400" />, number: "1", label: "Incredible Day" }
   ];
 
   return (
@@ -18,7 +18,7 @@ const About = () => {
         {/* Main Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-7xl font-bold uppercase mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
               AGNW FEST 2026
             </span>
           </h2>
@@ -36,9 +36,9 @@ const About = () => {
         {/* Festival Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {festivalStats.map((stat, index) => (
-            <div key={index} className="text-center p-8 bg-gray-900/50 rounded-xl border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300">
+            <div key={index} className="text-center p-8 bg-gray-900/50 rounded-xl border border-blue-400/30 hover:border-blue-400/50 transition-all duration-300">
               <div className="mb-4 flex justify-center">{stat.icon}</div>
-              <div className="text-3xl font-bold text-cyan-400 mb-2">{stat.number}</div>
+              <div className="text-3xl font-bold text-blue-400 mb-2">{stat.number}</div>
               <div className="text-gray-400 uppercase tracking-wider text-sm">{stat.label}</div>
             </div>
           ))}
@@ -47,7 +47,7 @@ const About = () => {
         {/* About Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
-            <h3 className="text-3xl font-bold mb-6 text-cyan-400">ABOUT THE FESTIVAL</h3>
+            <h3 className="text-3xl font-bold mb-6 text-blue-400">ABOUT THE FESTIVAL</h3>
             <div className="space-y-4 text-gray-300">
               <p>
                 AGNW Fest 2026 marks the beginning of a new era for music festivals in Scotland. 
@@ -67,7 +67,7 @@ const About = () => {
           </div>
           
           <div>
-            <h3 className="text-3xl font-bold mb-6 text-cyan-400">WHY STRANRAER?</h3>
+            <h3 className="text-3xl font-bold mb-6 text-blue-400">WHY STRANRAER?</h3>
             <div className="space-y-4 text-gray-300">
               <p>
                 Stranraer is a hidden gem on Scotland's southwest coast, offering breathtaking 
@@ -100,25 +100,25 @@ const About = () => {
 
         {/* Social Media */}
         <div className="text-center">
-          <h3 className="text-2xl font-bold mb-6 text-cyan-400">FOLLOW THE JOURNEY</h3>
+          <h3 className="text-2xl font-bold mb-6 text-blue-400">FOLLOW THE JOURNEY</h3>
           <p className="text-gray-400 mb-8">Stay connected for the latest updates, behind-the-scenes content, and exclusive announcements</p>
           <div className="flex justify-center space-x-6">
-            <a href="#" className="text-white hover:text-cyan-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-cyan-500/20">
+            <a href="#" className="text-white hover:text-blue-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-blue-500/20">
               <FaInstagram size={24} />
             </a>
-            <a href="#" className="text-white hover:text-cyan-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-cyan-500/20">
+            <a href="#" className="text-white hover:text-blue-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-blue-500/20">
               <FaTwitter size={24} />
             </a>
-            <a href="#" className="text-white hover:text-cyan-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-cyan-500/20">
+            <a href="#" className="text-white hover:text-blue-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-blue-500/20">
               <FaTiktok size={24} />
             </a>
-            <a href="#" className="text-white hover:text-cyan-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-cyan-500/20">
+            <a href="#" className="text-white hover:text-blue-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-blue-500/20">
               <FaYoutube size={24} />
             </a>
-            <a href="#" className="text-white hover:text-cyan-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-cyan-500/20">
+            <a href="#" className="text-white hover:text-blue-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-blue-500/20">
               <SiSpotify size={24} />
             </a>
-            <a href="#" className="text-white hover:text-cyan-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-cyan-500/20">
+            <a href="#" className="text-white hover:text-blue-400 transition-colors p-3 bg-gray-900/50 rounded-full hover:bg-blue-500/20">
               <SiApplemusic size={24} />
             </a>
           </div>

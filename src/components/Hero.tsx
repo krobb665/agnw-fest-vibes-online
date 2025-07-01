@@ -27,53 +27,57 @@ const Hero = () => {
       <div className="relative z-10 text-center w-full px-4">
         {/* Social Icons */}
         <div className="absolute top-8 right-8 hidden md:flex flex-col space-y-4">
-          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+          <a href="#" className="text-white hover:text-blue-400 transition-colors">
             <FaInstagram size={20} />
           </a>
-          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+          <a href="#" className="text-white hover:text-blue-400 transition-colors">
             <FaTwitter size={20} />
           </a>
-          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+          <a href="#" className="text-white hover:text-blue-400 transition-colors">
             <FaTiktok size={20} />
           </a>
-          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+          <a href="#" className="text-white hover:text-blue-400 transition-colors">
             <FaYoutube size={20} />
           </a>
-          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+          <a href="#" className="text-white hover:text-blue-400 transition-colors">
             <SiSpotify size={20} />
           </a>
-          <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+          <a href="#" className="text-white hover:text-blue-400 transition-colors">
             <SiApplemusic size={20} />
           </a>
         </div>
         
         {/* Main Content */}
         <div className="max-w-6xl mx-auto">
-          {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight text-white mb-4">
-            AGNW FEST
-          </h1>
+          {/* Logo */}
+          <div className="mb-8">
+            <img 
+              src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
+              alt="AGNW FEST 2026" 
+              className="mx-auto max-w-2xl w-full h-auto"
+            />
+          </div>
           
           {/* Location */}
           <div className="text-white text-xl md:text-2xl font-bold tracking-widest mb-4">
             AGNEW PARK • STRANRAER • SCOTLAND
           </div>
           
-          {/* Dates */}
-          <div className="text-cyan-400 text-lg md:text-2xl font-bold tracking-widest mb-12">
+          {/* Date */}
+          <div className="text-blue-400 text-lg md:text-2xl font-bold tracking-widest mb-12">
             30 MAY 2026
           </div>
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mt-16">
             <button 
-              className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
+              className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300 rounded-lg"
               onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
             >
               TICKETS NOT YET ON SALE
             </button>
             <button 
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300 rounded-lg"
               onClick={() => document.getElementById('lineup')?.scrollIntoView({ behavior: 'smooth' })}
             >
               LINE-UP TO BE ANNOUNCED

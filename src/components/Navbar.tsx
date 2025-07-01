@@ -12,7 +12,7 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
-      const sections = ['home', 'lineup', 'tickets', 'info', 'gallery', 'contact'];
+      const sections = ['home', 'about', 'lineup', 'tickets', 'info', 'gallery', 'contact'];
       const scrollPosition = window.scrollY + 200;
       
       for (const section of sections) {
@@ -44,6 +44,7 @@ const Navbar = () => {
   };
 
   const menuItems = [
+    { id: 'about', label: 'ABOUT' },
     { id: 'lineup', label: 'LINE-UP' },
     { id: 'tickets', label: 'TICKETS' },
     { id: 'info', label: 'INFO' },
@@ -60,7 +61,7 @@ const Navbar = () => {
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('home')}
-            className="text-2xl md:text-3xl font-black text-white tracking-tight hover:text-cyan-400 transition-colors"
+            className="text-2xl md:text-3xl font-black text-white tracking-tight hover:text-blue-400 transition-colors"
           >
             AGNW FEST
           </button>
@@ -73,8 +74,8 @@ const Navbar = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
                   activeSection === item.id 
-                    ? 'text-cyan-400 border-b-2 border-cyan-400' 
-                    : 'text-white hover:text-cyan-400'
+                    ? 'text-blue-400 border-b-2 border-blue-400' 
+                    : 'text-white hover:text-blue-400'
                 }`}
               >
                 {item.label}
@@ -82,7 +83,7 @@ const Navbar = () => {
             ))}
             <button 
               onClick={() => scrollToSection('tickets')}
-              className="ml-4 bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors"
+              className="ml-4 bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded-lg"
             >
               TICKETS NOT YET ON SALE
             </button>
@@ -92,7 +93,7 @@ const Navbar = () => {
           <Sheet>
             <SheetTrigger asChild>
               <button
-                className="md:hidden text-white p-2 hover:text-cyan-400 transition-colors"
+                className="md:hidden text-white p-2 hover:text-blue-400 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu size={24} />
@@ -106,8 +107,8 @@ const Navbar = () => {
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
                       activeSection === item.id 
-                        ? 'text-cyan-400 bg-gray-900' 
-                        : 'text-white hover:text-cyan-400 hover:bg-gray-900/50'
+                        ? 'text-blue-400 bg-gray-900' 
+                        : 'text-white hover:text-blue-400 hover:bg-gray-900/50'
                     }`}
                   >
                     {item.label}
@@ -115,7 +116,7 @@ const Navbar = () => {
                 ))}
                 <button 
                   onClick={() => scrollToSection('tickets')}
-                  className="mt-4 bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-3 px-6 text-sm uppercase tracking-wider transition-colors"
+                  className="mt-4 bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-3 px-6 text-sm uppercase tracking-wider transition-colors rounded-lg"
                 >
                   TICKETS NOT YET ON SALE
                 </button>
