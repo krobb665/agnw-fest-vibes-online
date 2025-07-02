@@ -2,28 +2,33 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'lineup', 'tickets', 'info', 'gallery', 'contact'];
-      const scrollPosition = window.scrollY + 200;
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
+      // Only update active section on home page
+      if (isHomePage) {
+        const sections = ['home', 'about', 'lineup', 'tickets', 'info', 'gallery', 'contact'];
+        const scrollPosition = window.scrollY + 200;
+        
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const offsetTop = element.offsetTop;
+            const offsetHeight = element.offsetHeight;
+            
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
       }
@@ -31,9 +36,15 @@ const Navbar = () => {
     
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
 
   const scrollToSection = (sectionId: string) => {
+    if (!isHomePage) {
+      // If not on home page, navigate to home first
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       window.scrollTo({
@@ -59,8 +70,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <button 
-            onClick={() => scrollToSection('home')}
+          <Link 
+            to="/"
             className="hover:opacity-80 transition-opacity"
           >
             <img 
@@ -68,7 +79,7 @@ const Navbar = () => {
               alt="AGNW FEST 2026" 
               className="h-12 md:h-16 w-auto"
             />
-          </button>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
@@ -77,7 +88,7 @@ const Navbar = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
-                  activeSection === item.id 
+                  isHomePage && activeSection === item.id 
                     ? 'text-blue-400 border-b-2 border-blue-400' 
                     : 'text-white hover:text-blue-400'
                 }`}
@@ -85,6 +96,16 @@ const Navbar = () => {
                 {item.label}
               </button>
             ))}
+            <Link
+              to="/resident-info"
+              className={`px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
+                location.pathname === '/resident-info'
+                  ? 'text-blue-400 border-b-2 border-blue-400'
+                  : 'text-white hover:text-blue-400'
+              }`}
+            >
+              RESIDENTS
+            </Link>
             <button 
               onClick={() => scrollToSection('tickets')}
               className="ml-4 bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded-lg"
@@ -110,7 +131,7 @@ const Navbar = () => {
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
-                      activeSection === item.id 
+                      isHomePage && activeSection === item.id 
                         ? 'text-blue-400 bg-gray-900' 
                         : 'text-white hover:text-blue-400 hover:bg-gray-900/50'
                     }`}
@@ -118,6 +139,16 @@ const Navbar = () => {
                     {item.label}
                   </button>
                 ))}
+                <Link
+                  to="/resident-info"
+                  className={`text-left px-4 py-3 text-sm uppercase tracking-wider font-bold transition-colors ${
+                    location.pathname === '/resident-info'
+                      ? 'text-blue-400 bg-gray-900'
+                      : 'text-white hover:text-blue-400 hover:bg-gray-900/50'
+                  }`}
+                >
+                  RESIDENTS
+                </Link>
                 <button 
                   onClick={() => scrollToSection('tickets')}
                   className="mt-4 bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-3 px-6 text-sm uppercase tracking-wider transition-colors rounded-lg"
