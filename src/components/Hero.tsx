@@ -1,10 +1,11 @@
 
 import { FaInstagram, FaTwitter, FaTiktok, FaFacebook, FaYoutube } from 'react-icons/fa';
 import { SiApplemusic, SiSpotify } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <iframe
@@ -70,18 +71,18 @@ const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mt-16">
-            <button 
+            <Link 
+              to="/tickets"
               className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300 rounded-lg"
-              onClick={() => document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' })}
             >
               TICKETS NOT YET ON SALE
-            </button>
-            <button 
+            </Link>
+            <Link 
+              to="/lineup"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300 rounded-lg"
-              onClick={() => document.getElementById('lineup')?.scrollIntoView({ behavior: 'smooth' })}
             >
               LINE-UP TO BE ANNOUNCED
-            </button>
+            </Link>
           </div>
         </div>
       </div>

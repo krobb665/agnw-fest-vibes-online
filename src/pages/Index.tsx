@@ -1,12 +1,6 @@
 
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import About from "@/components/About";
-import Lineup from "@/components/Lineup";
-import Tickets from "@/components/Tickets";
-import Info from "@/components/Info";
-import Gallery from "@/components/Gallery";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -14,12 +8,6 @@ const Index = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       <Hero />
-      <About />
-      <Lineup />
-      <Tickets />
-      <Info />
-      <Gallery />
-      <Contact />
       <Footer />
     </div>
   );
