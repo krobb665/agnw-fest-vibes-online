@@ -6,8 +6,12 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-16 text-center">
       <div className="container mx-auto px-4">
-        <div className="text-4xl md:text-6xl font-black mb-8 tracking-tighter">
-          AGNW FEST 2026
+        <div className="mb-8">
+          <img 
+            src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
+            alt="AGNW FEST 2026" 
+            className="h-20 w-auto mx-auto mb-4"
+          />
         </div>
         
         <div className="text-xl font-bold mb-8 tracking-wider">
