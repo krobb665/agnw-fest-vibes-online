@@ -37,22 +37,28 @@ const Navbar = () => {
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            {/* Logo */}
-            <Link 
-              to="/"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <img 
-                src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
-                alt="AGNW FEST 2026" 
-                className="h-12 md:h-16 w-auto"
-              />
-            </Link>
+            {/* Logo and Event Info */}
+            <div className="flex items-center space-x-6">
+              <Link 
+                to="/"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
+                  alt="AGNW FEST 2026" 
+                  className="h-12 md:h-16 w-auto"
+                />
+              </Link>
+              <div className="hidden md:block text-white">
+                <div className="text-sm font-bold tracking-wider">30 MAY 2026</div>
+                <div className="text-xs text-gray-300">AGNEW PARK • STRANRAER</div>
+              </div>
+            </div>
 
             {/* Menu Button */}
             <button
               onClick={toggleMenu}
-              className="text-white p-2 hover:text-blue-400 transition-colors"
+              className="text-white p-2 hover:text-cyan-400 transition-colors z-50 relative"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -70,6 +76,7 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 flex items-center justify-center"
+            onClick={toggleMenu}
           >
             <motion.div
               initial={{ y: 50, opacity: 0 }}
@@ -77,6 +84,7 @@ const Navbar = () => {
               exit={{ y: 50, opacity: 0 }}
               transition={{ duration: 0.3, delay: 0.1 }}
               className="text-center"
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="space-y-8">
                 {menuItems.map((item, index) => (
@@ -89,10 +97,10 @@ const Navbar = () => {
                     <Link
                       to={item.path}
                       onClick={toggleMenu}
-                      className={`block text-4xl md:text-6xl font-black tracking-wider transition-colors ${
+                      className={`block text-4xl md:text-6xl font-black tracking-wider transition-colors hover:text-cyan-400 ${
                         location.pathname === item.path
-                          ? 'text-blue-400'
-                          : 'text-white hover:text-blue-400'
+                          ? 'text-cyan-400'
+                          : 'text-white'
                       }`}
                     >
                       {item.label}
@@ -109,7 +117,7 @@ const Navbar = () => {
                   <Link
                     to="/tickets"
                     onClick={toggleMenu}
-                    className="inline-block bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-4 px-12 text-xl uppercase tracking-wider transition-colors rounded-lg"
+                    className="inline-block bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-4 px-12 text-xl uppercase tracking-wider transition-colors rounded-lg"
                   >
                     TICKETS NOT YET ON SALE
                   </Link>
