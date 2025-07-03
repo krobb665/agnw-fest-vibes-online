@@ -1,7 +1,6 @@
 
 import { FaInstagram, FaTwitter, FaTiktok, FaFacebook, FaYoutube } from 'react-icons/fa';
 import { SiApplemusic, SiSpotify } from 'react-icons/si';
-import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -65,24 +64,8 @@ const Hero = () => {
           </div>
           
           {/* Date */}
-          <div className="text-blue-400 text-lg md:text-2xl font-bold tracking-widest mb-12">
+          <div className="text-blue-400 text-lg md:text-2xl font-bold tracking-widest">
             30 MAY 2026
-          </div>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mt-16">
-            <Link 
-              to="/tickets"
-              className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300 rounded-lg"
-            >
-              TICKETS NOT YET ON SALE
-            </Link>
-            <Link 
-              to="/lineup"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold py-4 px-12 text-lg md:text-xl tracking-widest transition-colors duration-300 rounded-lg"
-            >
-              LINE-UP TO BE ANNOUNCED
-            </Link>
           </div>
         </div>
       </div>
