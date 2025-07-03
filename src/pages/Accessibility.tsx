@@ -3,12 +3,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import { motion } from "framer-motion";
-import { Wheelchair, Eye, Ear, Heart } from "lucide-react";
+import { User, Eye, Ear, Heart } from "lucide-react";
 
 const Accessibility = () => {
   const accessibilityFeatures = [
     {
-      icon: <Wheelchair className="w-8 h-8" />,
+      icon: <User className="w-8 h-8" />,
       title: "Mobility Access",
       features: [
         "Wheelchair accessible pathways throughout the site",
