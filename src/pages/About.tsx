@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -8,21 +9,14 @@ const About = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                ABOUT
-              </span>
-            </h1>
-          </motion.div>
+      <PageHeader 
+        title="ABOUT"
+        gradientFrom="from-blue-400"
+        gradientTo="to-blue-600"
+      />
 
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

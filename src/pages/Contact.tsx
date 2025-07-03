@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { motion } from "framer-motion";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
 
@@ -9,24 +10,15 @@ const Contact = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-purple-600">
-                CONTACT
-              </span>
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Get in touch with the AGNW FEST team
-            </p>
-          </motion.div>
+      <PageHeader 
+        title="CONTACT"
+        subtitle="Get in touch with the AGNW FEST team"
+        gradientFrom="from-purple-400"
+        gradientTo="to-purple-600"
+      />
 
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 mb-16">
               <motion.div 
@@ -41,12 +33,12 @@ const Contact = () => {
                     <h3 className="text-xl font-bold text-white">Email</h3>
                   </div>
                   <p className="text-gray-300 mb-2">General Inquiries:</p>
-                  <a href="mailto:info@agnwfest.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
-                    info@agnwfest.co.uk
+                  <a href="mailto:info@agnwfestival.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
+                    info@agnwfestival.co.uk
                   </a>
                   <p className="text-gray-300 mb-2 mt-4">Press & Media:</p>
-                  <a href="mailto:press@agnwfest.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
-                    press@agnwfest.co.uk
+                  <a href="mailto:press@agnwfestival.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
+                    press@agnwfestival.co.uk
                   </a>
                 </div>
 
@@ -85,15 +77,15 @@ const Contact = () => {
                 <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-purple-400/20">
                   <h3 className="text-xl font-bold mb-6 text-white">Follow Us</h3>
                   <div className="space-y-4">
-                    <a href="#" className="flex items-center text-gray-300 hover:text-purple-400 transition-colors">
+                    <a href="https://instagram.com/agnwfest" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-300 hover:text-purple-400 transition-colors">
                       <FaInstagram className="text-2xl mr-4" />
                       <span>@agnwfest</span>
                     </a>
-                    <a href="#" className="flex items-center text-gray-300 hover:text-purple-400 transition-colors">
+                    <a href="https://twitter.com/agnwfest" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-300 hover:text-purple-400 transition-colors">
                       <FaTwitter className="text-2xl mr-4" />
                       <span>@agnwfest</span>
                     </a>
-                    <a href="#" className="flex items-center text-gray-300 hover:text-purple-400 transition-colors">
+                    <a href="https://tiktok.com/@agnwfest" target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-300 hover:text-purple-400 transition-colors">
                       <FaTiktok className="text-2xl mr-4" />
                       <span>@agnwfest</span>
                     </a>
@@ -105,8 +97,8 @@ const Contact = () => {
                   <p className="text-gray-300 mb-4">
                     For partnerships, sponsorship opportunities, or vendor applications:
                   </p>
-                  <a href="mailto:business@agnwfest.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
-                    business@agnwfest.co.uk
+                  <a href="mailto:business@agnwfestival.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
+                    business@agnwfestival.co.uk
                   </a>
                 </div>
 
@@ -115,8 +107,8 @@ const Contact = () => {
                   <p className="text-gray-300 mb-4">
                     Interested in performing at AGNW FEST?
                   </p>
-                  <a href="mailto:artists@agnwfest.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
-                    artists@agnwfest.co.uk
+                  <a href="mailto:artists@agnwfestival.co.uk" className="text-purple-400 hover:text-purple-300 transition-colors">
+                    artists@agnwfestival.co.uk
                   </a>
                 </div>
               </motion.div>

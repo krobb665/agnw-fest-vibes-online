@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { motion } from "framer-motion";
 import { FaInstagram } from 'react-icons/fa';
 
@@ -9,24 +10,15 @@ const Gallery = () => {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-600">
-                GALLERY
-              </span>
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Photos coming soon - follow us on social media for updates
-            </p>
-          </motion.div>
+      <PageHeader 
+        title="GALLERY"
+        subtitle="Photos coming soon - follow us on social media for updates"
+        gradientFrom="from-cyan-400"
+        gradientTo="to-cyan-600"
+      />
 
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -56,9 +48,14 @@ const Gallery = () => {
               <p className="text-gray-400 max-w-2xl mx-auto mb-8">
                 Follow us on Instagram and use #AGNWFEST2026 for a chance to be featured on our official page and win VIP tickets for next year!
               </p>
-              <button className="bg-transparent border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-black font-bold py-3 px-8 rounded-full transition-colors duration-300 flex items-center mx-auto">
+              <a 
+                href="https://instagram.com/agnwfest" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-transparent border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-black font-bold py-3 px-8 rounded-full transition-colors duration-300 flex items-center mx-auto w-fit"
+              >
                 <FaInstagram className="mr-2" /> FOLLOW US
-              </button>
+              </a>
             </motion.div>
           </div>
         </div>

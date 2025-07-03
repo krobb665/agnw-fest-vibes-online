@@ -1,32 +1,23 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { motion } from "framer-motion";
-import { FaMapMarkerAlt, FaClock, FaParking, FaBus, FaExclamationTriangle, FaShieldAlt, FaBan } from "react-icons/fa";
+import { FaMapMarkerAlt, FaClock, FaParking, FaBus, FaExclamationTriangle, FaShieldAlt, FaBan, FaLightbulb } from "react-icons/fa";
 
 const Info = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600">
-                INFO
-              </span>
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Everything you need to know for your visit to AGNW FEST 2026
-            </p>
-          </motion.div>
+      <PageHeader 
+        title="INFO"
+        subtitle="Everything you need to know for your visit to AGNW FEST 2026"
+        gradientFrom="from-green-400"
+        gradientTo="to-green-600"
+      />
 
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {[
@@ -48,6 +39,85 @@ const Info = () => {
                 </motion.div>
               ))}
             </div>
+
+            {/* Festival Tips */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-yellow-900/20 backdrop-blur-sm p-8 rounded-xl border border-yellow-400/30 mb-8"
+            >
+              <div className="flex items-center justify-center mb-6">
+                <FaLightbulb className="text-yellow-400 text-3xl mr-3" />
+                <h2 className="text-3xl font-black text-yellow-400">FESTIVAL TIPS</h2>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-bold mb-4 text-yellow-300">Before You Go</h3>
+                  <ul className="text-gray-300 space-y-2 text-sm">
+                    <li>• Download the festival app for live updates</li>
+                    <li>• Check the weather forecast and dress accordingly</li>
+                    <li>• Plan your transport route in advance</li>
+                    <li>• Charge all your devices before arriving</li>
+                    <li>• Take a screenshot of your ticket as backup</li>
+                    <li>• Bring a portable charger</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold mb-4 text-yellow-300">At the Festival</h3>
+                  <ul className="text-gray-300 space-y-2 text-sm">
+                    <li>• Stay hydrated - use free water refill stations</li>
+                    <li>• Take note of meeting points with friends</li>
+                    <li>• Keep your belongings secure at all times</li>
+                    <li>• Respect other festival-goers and staff</li>
+                    <li>• Follow all safety instructions</li>
+                    <li>• Take breaks between performances</li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Interactive Map */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800 mb-8"
+            >
+              <h2 className="text-3xl font-black mb-8 text-green-400 text-center">FESTIVAL LOCATION</h2>
+              
+              <div className="mb-6">
+                <div className="aspect-video rounded-lg overflow-hidden">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d562.4775789344143!2d-5.034376650384858!3d54.90734199620842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48623bb178df3ae3%3A0x88c27fa6c4fd7dae!2sAgnew%20Park!5e0!3m2!1sen!2suk!4v1673889600000!5m2!1sen!2suk"
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-lg"
+                  ></iframe>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-xl font-bold mb-4 text-white">Agnew Park, Stranraer</h3>
+                <p className="text-gray-300 mb-4">
+                  Beautiful park setting in the heart of Stranraer, perfect for our festival experience.
+                </p>
+                <a 
+                  href="https://www.google.com/maps/place/Agnew+Park/@54.907342,-5.0343767,18.17z/data=!4m6!3m5!1s0x48623bb178df3ae3:0x88c27fa6c4fd7dae!8m2!3d54.907023!4d-5.0337332!16s%2Fg%2F1t_kfygw?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors inline-block"
+                >
+                  GET DIRECTIONS
+                </a>
+              </div>
+            </motion.div>
 
             {/* Festival Information */}
             <motion.div 

@@ -5,14 +5,14 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const LineupBar = () => {
   const headliners = [
-    { name: "ARCTIC MONKEYS", image: "/placeholder.svg" },
-    { name: "DUA LIPA", image: "/placeholder.svg" },
-    { name: "CALVIN HARRIS", image: "/placeholder.svg" },
-    { name: "LEWIS CAPALDI", image: "/placeholder.svg" },
-    { name: "THE 1975", image: "/placeholder.svg" },
-    { name: "BILLIE EILISH", image: "/placeholder.svg" },
-    { name: "ED SHEERAN", image: "/placeholder.svg" },
-    { name: "COLDPLAY", image: "/placeholder.svg" }
+    { name: "ARCTIC MONKEYS", image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=80" },
+    { name: "DUA LIPA", image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" },
+    { name: "CALVIN HARRIS", image: "https://images.unsplash.com/photo-1520637836862-4d197d17c675?auto=format&fit=crop&w=400&q=80" },
+    { name: "LEWIS CAPALDI", image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=80" },
+    { name: "THE 1975", image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" },
+    { name: "BILLIE EILISH", image: "https://images.unsplash.com/photo-1520637836862-4d197d17c675?auto=format&fit=crop&w=400&q=80" },
+    { name: "ED SHEERAN", image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=80" },
+    { name: "COLDPLAY", image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" }
   ];
 
   return (
@@ -77,7 +77,7 @@ const LineupBar = () => {
           
           <Link
             to="/lineup"
-            className="bg-black text-white hover:bg-gray-800 font-bold py-3 px-8 text-lg tracking-wider transition-colors rounded-lg"
+            className="bg-black text-white hover:bg-gray-800 font-bold py-3 px-8 text-lg tracking-wider transition-colors rounded-lg inline-block"
           >
             SEE FULL LINE-UP
           </Link>

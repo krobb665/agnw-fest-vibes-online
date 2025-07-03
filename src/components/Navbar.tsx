@@ -37,28 +37,45 @@ const Navbar = () => {
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            {/* Logo and Event Info */}
-            <div className="flex items-center space-x-6">
-              <Link 
-                to="/"
-                className="hover:opacity-80 transition-opacity"
+            {/* Logo */}
+            <Link 
+              to="/"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
+                alt="AGNW FEST 2026" 
+                className="h-12 md:h-16 w-auto"
+              />
+            </Link>
+
+            {/* Desktop Menu - Right Aligned */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`text-sm font-bold tracking-wider transition-colors hover:text-cyan-400 ${
+                    location.pathname === item.path
+                      ? 'text-cyan-400'
+                      : 'text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                to="/tickets"
+                className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded"
               >
-                <img 
-                  src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
-                  alt="AGNW FEST 2026" 
-                  className="h-12 md:h-16 w-auto"
-                />
+                TICKETS
               </Link>
-              <div className="hidden md:block text-white">
-                <div className="text-sm font-bold tracking-wider">30 MAY 2026</div>
-                <div className="text-xs text-gray-300">AGNEW PARK • STRANRAER</div>
-              </div>
             </div>
 
-            {/* Menu Button */}
+            {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="text-white p-2 hover:text-cyan-400 transition-colors z-50 relative"
+              className="lg:hidden text-white p-2 hover:text-cyan-400 transition-colors z-50 relative"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -67,7 +84,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Full Screen Menu Overlay */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -75,7 +92,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 flex items-center justify-center"
+            className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 flex items-center justify-center lg:hidden"
             onClick={toggleMenu}
           >
             <motion.div
@@ -119,7 +136,7 @@ const Navbar = () => {
                     onClick={toggleMenu}
                     className="inline-block bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-4 px-12 text-xl uppercase tracking-wider transition-colors rounded-lg"
                   >
-                    TICKETS NOT YET ON SALE
+                    TICKETS
                   </Link>
                 </motion.div>
               </div>

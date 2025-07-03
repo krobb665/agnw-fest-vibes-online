@@ -1,28 +1,23 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Tickets = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                TICKETS
-              </span>
-            </h1>
-          </motion.div>
+      <PageHeader 
+        title="TICKETS"
+        gradientFrom="from-blue-400"
+        gradientTo="to-blue-600"
+      />
 
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -39,9 +34,12 @@ const Tickets = () => {
               </p>
               
               <div className="space-y-6">
-                <button className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-4 px-12 text-xl tracking-wider transition-colors rounded-lg block w-full md:w-auto md:inline-block">
+                <Link 
+                  to="/contact"
+                  className="bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-4 px-12 text-xl tracking-wider transition-colors rounded-lg block w-full md:w-auto md:inline-block"
+                >
                   NOTIFY ME WHEN TICKETS ARE AVAILABLE
-                </button>
+                </Link>
                 
                 <p className="text-gray-400 text-sm">
                   Join thousands of others waiting for tickets to go on sale
