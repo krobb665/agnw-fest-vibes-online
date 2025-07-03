@@ -1,0 +1,39 @@
+@import url('https://use.typekit.net/your-kit-id.css');
+
+/* Custom scrollbar styles */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Ensure the scrollbar is hidden while allowing scrolling */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Apply Gotham font to LineupBar */
+.font-gotham {
+  font-family: 'Gotham', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700; /* Bold */
+  letter-spacing: 0.5px;
+}
+
+/* LineupBar specific styles */
+.lineup-bar {
+  height: 60px;
+}
+
+@media (min-width: 768px) {
+  .lineup-bar {
+    height: 70px;
+  }
+}

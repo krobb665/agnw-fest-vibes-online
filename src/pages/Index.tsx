@@ -6,10 +6,12 @@ import LineupBar from "@/components/LineupBar";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
-      <Hero />
-      <LineupBar />
+      <main className="relative">
+        <Hero />
+        <LineupBar />
+      </main>
       <Footer />
     </div>
   );
