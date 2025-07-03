@@ -19,11 +19,12 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { path: '/about', label: 'ABOUT' },
-    { path: '/lineup', label: 'LINE-UP' },
+    { path: '/', label: 'HOME' },
     { path: '/tickets', label: 'TICKETS' },
+    { path: '/lineup', label: 'LINEUP' },
     { path: '/info', label: 'INFO' },
-    { path: '/gallery', label: 'GALLERY' },
+    { path: '/gallery', label: 'EXPLORE' },
+    { path: '/about', label: 'MORE' },
     { path: '/contact', label: 'CONTACT' },
     { path: '/resident-info', label: 'RESIDENTS' }
   ];
@@ -49,99 +50,117 @@ const Navbar = () => {
               />
             </Link>
 
-            {/* Desktop Menu - Right Aligned */}
-            <div className="hidden lg:flex items-center space-x-8">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`text-sm font-bold tracking-wider transition-colors hover:text-cyan-400 ${
-                    location.pathname === item.path
-                      ? 'text-cyan-400'
-                      : 'text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            {/* Desktop Menu - Hidden on all screens, only hamburger shown */}
+            <div className="flex items-center space-x-4">
               <Link
                 to="/tickets"
-                className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded"
+                className="hidden md:block bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded"
               >
                 TICKETS
               </Link>
+              
+              {/* Menu Button */}
+              <button
+                onClick={toggleMenu}
+                className="text-white p-2 hover:text-cyan-400 transition-colors z-50 relative"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMenu}
-              className="lg:hidden text-white p-2 hover:text-cyan-400 transition-colors z-50 relative"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Right Side Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 flex items-center justify-center lg:hidden"
-            onClick={toggleMenu}
-          >
+          <>
+            {/* Backdrop */}
             <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 50, opacity: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              className="text-center"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
+              onClick={toggleMenu}
+            />
+            
+            {/* Right Side Menu Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="fixed right-0 top-0 h-full w-80 md:w-96 bg-black z-50 overflow-y-auto"
             >
-              <div className="space-y-8">
-                {menuItems.map((item, index) => (
+              {/* Close Button */}
+              <button
+                onClick={toggleMenu}
+                className="absolute top-6 right-6 text-white p-2 hover:text-cyan-400 transition-colors z-50"
+                aria-label="Close menu"
+              >
+                <X size={32} />
+              </button>
+
+              {/* Menu Content */}
+              <div className="pt-20 px-8 pb-8">
+                <div className="space-y-6">
+                  {menuItems.map((item, index) => (
+                    <motion.div
+                      key={item.path}
+                      initial={{ x: 50, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
+                    >
+                      <Link
+                        to={item.path}
+                        onClick={toggleMenu}
+                        className={`block text-2xl md:text-3xl font-black tracking-wider transition-colors hover:text-cyan-400 border-b border-gray-800 pb-4 ${
+                          location.pathname === item.path
+                            ? 'text-cyan-400'
+                            : 'text-white'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                  
                   <motion.div
-                    key={item.path}
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 + menuItems.length * 0.05 }}
+                    className="pt-8"
                   >
                     <Link
-                      to={item.path}
+                      to="/tickets"
                       onClick={toggleMenu}
-                      className={`block text-4xl md:text-6xl font-black tracking-wider transition-colors hover:text-cyan-400 ${
-                        location.pathname === item.path
-                          ? 'text-cyan-400'
-                          : 'text-white'
-                      }`}
+                      className="block bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-4 px-8 text-lg uppercase tracking-wider transition-colors rounded-lg text-center"
                     >
-                      {item.label}
+                      GET TICKETS
                     </Link>
                   </motion.div>
-                ))}
-                
-                <motion.div
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 + menuItems.length * 0.05 }}
-                  className="mt-12"
-                >
-                  <Link
-                    to="/tickets"
-                    onClick={toggleMenu}
-                    className="inline-block bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-4 px-12 text-xl uppercase tracking-wider transition-colors rounded-lg"
+
+                  {/* Contact Info */}
+                  <motion.div
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 + (menuItems.length + 1) * 0.05 }}
+                    className="pt-8 border-t border-gray-800"
                   >
-                    TICKETS
-                  </Link>
-                </motion.div>
+                    <p className="text-gray-400 text-sm mb-2">CONTACT</p>
+                    <a 
+                      href="mailto:info@agnwfestival.co.uk"
+                      className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >
+                      info@agnwfestival.co.uk
+                    </a>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
