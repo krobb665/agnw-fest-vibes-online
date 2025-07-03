@@ -1,51 +1,110 @@
-import { FaSpotify, FaApple, FaYoutube } from 'react-icons/fa';
+import { useEffect, useRef } from 'react';
 
 const LineupBar = () => {
-  return (
-    <section id="lineup" className="relative bg-black text-white py-20 overflow-hidden">
-      {/* Diagonal background element */}
-      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-cyan-500/5 to-transparent transform rotate-6 origin-top-right -mr-1/4 -mt-32"></div>
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Sample lineup data - in a real scenario, this would come from an API or CMS
+  const lineupArtists = [
+    { name: "LEWIS CAPALDI", image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "CALVIN HARRIS", image: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "ARCTIC MONKEYS", image: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "DUA LIPA", image: "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "THE KILLERS", image: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "BILLIE EILISH", image: "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "POST MALONE", image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "STORMZY", image: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "KASABIAN", image: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" },
+    { name: "ROYAL BLOOD", image: "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" }
+  ];
+
+  // Duplicate the array to create seamless infinite scroll
+  const duplicatedArtists = [...lineupArtists, ...lineupArtists];
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let animationId: number;
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5; // Adjust speed as needed
+
+    const animate = () => {
+      scrollPosition += scrollSpeed;
       
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-600">
-              LINE-UP
-            </span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            The biggest names in music are coming to Agnew Park. Check out who's playing each day.
-          </p>
-        </div>
+      // Reset position when we've scrolled through one complete set
+      if (scrollPosition >= scrollContainer.scrollWidth / 2) {
+        scrollPosition = 0;
+      }
+      
+      scrollContainer.scrollLeft = scrollPosition;
+      animationId = requestAnimationFrame(animate);
+    };
 
-        {/* To Be Announced Banner */}
-        <div className="mb-24 bg-gradient-to-r from-cyan-400 to-cyan-600 text-black p-12 rounded-lg text-center">
-          <h3 className="text-3xl md:text-5xl font-black mb-6">LINE-UP TO BE ANNOUNCED</h3>
-          <p className="text-lg md:text-xl mb-8">We're working on bringing you an incredible lineup of artists. Stay tuned for exciting announcements!</p>
-          <button className="bg-black text-white hover:bg-gray-900 px-8 py-4 font-bold uppercase tracking-wider text-sm transition-colors rounded">
-            SIGN UP FOR UPDATES
-          </button>
-        </div>
+    animationId = requestAnimationFrame(animate);
 
-        {/* Music Platforms */}
-        <div className="text-center mt-24">
-          <h4 className="text-lg font-bold mb-6">LISTEN TO THE OFFICIAL PLAYLIST</h4>
-          <p className="text-gray-400 mb-8">TO BE ANNOUNCED</p>
-          <div className="flex justify-center space-x-6 opacity-50">
-            <div className="text-gray-600">
-              <FaSpotify size={32} />
+    // Pause animation on hover
+    const handleMouseEnter = () => {
+      cancelAnimationFrame(animationId);
+    };
+
+    const handleMouseLeave = () => {
+      animationId = requestAnimationFrame(animate);
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
+  return (
+    <div className="relative w-full bg-black overflow-hidden py-8">
+      {/* Gradient overlays for smooth fade effect */}
+      <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+      
+      {/* Scrolling container */}
+      <div 
+        ref={scrollRef}
+        className="flex items-center space-x-8 overflow-x-hidden whitespace-nowrap"
+        style={{ 
+          scrollBehavior: 'auto',
+          WebkitOverflowScrolling: 'touch'
+        }}
+      >
+        {duplicatedArtists.map((artist, index) => (
+          <div 
+            key={`${artist.name}-${index}`}
+            className="flex-shrink-0 flex items-center space-x-6 group cursor-pointer"
+          >
+            {/* Artist Image */}
+            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-cyan-400/30 group-hover:border-cyan-400 transition-all duration-300">
+              <img 
+                src={artist.image} 
+                alt={artist.name}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
-            <div className="text-gray-600">
-              <FaApple size={32} />
+            
+            {/* Artist Name */}
+            <div className="text-white font-black text-xl md:text-2xl lg:text-3xl tracking-wider group-hover:text-cyan-400 transition-colors duration-300">
+              {artist.name}
             </div>
-            <div className="text-gray-600">
-              <FaYoutube size={32} />
-            </div>
+            
+            {/* Separator */}
+            <div className="w-2 h-2 bg-cyan-400 rounded-full opacity-60"></div>
           </div>
-        </div>
+        ))}
       </div>
-    </section>
+      
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30"></div>
+    </div>
   );
 };
 
