@@ -19,8 +19,9 @@ const PageHeader = ({ title, subtitle, gradientFrom, gradientTo }: PageHeaderPro
             backgroundImage: `url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=2000&q=80')`
           }}
         />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80" />
+        {/* Enhanced overlay for better contrast */}
+        <div className="absolute inset-0 bg-black/80 dark:bg-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 dark:from-black/70 dark:via-black/50 dark:to-black/90" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -31,12 +32,12 @@ const PageHeader = ({ title, subtitle, gradientFrom, gradientTo }: PageHeaderPro
           className="text-center"
         >
           <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${gradientFrom} ${gradientTo}`}>
+            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${gradientFrom} ${gradientTo} drop-shadow-lg`}>
               {title}
             </span>
           </h1>
           {subtitle && (
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-200 dark:text-gray-300 max-w-3xl mx-auto drop-shadow-md">
               {subtitle}
             </p>
           )}

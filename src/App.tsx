@@ -8,7 +8,12 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Lineup from "./pages/Lineup";
 import Tickets from "./pages/Tickets";
+import Travel from "./pages/Travel";
 import Info from "./pages/Info";
+import FoodDrink from "./pages/FoodDrink";
+import Accessibility from "./pages/Accessibility";
+import Sustainability from "./pages/Sustainability";
+import News from "./pages/News";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import ResidentInfo from "./pages/ResidentInfo";
@@ -27,7 +32,12 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/lineup" element={<Lineup />} />
           <Route path="/tickets" element={<Tickets />} />
+          <Route path="/travel" element={<Travel />} />
           <Route path="/info" element={<Info />} />
+          <Route path="/food-drink" element={<FoodDrink />} />
+          <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/sustainability" element={<Sustainability />} />
+          <Route path="/news" element={<News />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resident-info" element={<ResidentInfo />} />
