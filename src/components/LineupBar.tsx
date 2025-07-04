@@ -5,8 +5,9 @@ const LineupBar = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const visibleItems = 4; // Show 4 items at a time
+  const visibleItems = 5; // Show 5 items at a time
   const [isHovered, setIsHovered] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Lineup data
   const lineupArtists = [
@@ -60,41 +61,53 @@ const LineupBar = () => {
     setCurrentIndex(prev => (prev - 1 + lineupArtists.length) % lineupArtists.length);
   };
 
-  // Get artists to display in the carousel
+  // Get artists to display in the carousel with infinite scroll effect
   const getVisibleArtists = () => {
-    const startIndex = currentIndex % lineupArtists.length;
-    const endIndex = (currentIndex + visibleItems) % lineupArtists.length;
+    const items = [];
+    const totalItems = lineupArtists.length;
     
-    if (endIndex > startIndex) {
-      return lineupArtists.slice(startIndex, endIndex);
-    } else {
-      return [...lineupArtists.slice(startIndex), ...lineupArtists.slice(0, endIndex)];
+    // Always show 5 items: 2 before, 1 center, 2 after
+    for (let i = -2; i <= 2; i++) {
+      let index = (currentIndex + i + totalItems) % totalItems;
+      items.push({
+        ...lineupArtists[index],
+        index,
+        position: i
+      });
     }
+    
+    return items;
   };
 
-  // Auto-rotate every 6 seconds with pause on hover
+  // Auto-rotate every 4 seconds with pause on hover
   useEffect(() => {
-    if (isHovered) return;
+    if (isHovered || isTransitioning) return;
     
     const timer = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % lineupArtists.length);
-    }, 6000);
+    }, 4000);
     
     return () => clearInterval(timer);
-  }, [currentIndex, isHovered]);
+  }, [currentIndex, isHovered, isTransitioning]);
   
   const scrollToItem = useCallback((index: number) => {
     if (!containerRef.current) return;
     
     const container = containerRef.current;
-    const itemWidth = container.offsetWidth / visibleItems;
-    const scrollLeft = itemWidth * index;
+    const itemWidth = container.offsetWidth / 5; // Always 5 items visible
+    const scrollLeft = (index - 2) * itemWidth + (container.offsetWidth - itemWidth) / 2;
     
+    setIsTransitioning(true);
     container.scrollTo({
       left: scrollLeft,
       behavior: 'smooth'
     });
-  }, [visibleItems]);
+    
+    // Reset transitioning state after animation completes
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
+  }, []);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -117,8 +130,9 @@ const LineupBar = () => {
         {/* Navigation Arrows */}
         <button 
           onClick={() => {
-            setCurrentIndex(prev => (prev - 1 + lineupArtists.length) % lineupArtists.length);
-            scrollToItem((currentIndex - 1 + lineupArtists.length) % lineupArtists.length);
+            const newIndex = (currentIndex - 1 + lineupArtists.length) % lineupArtists.length;
+            setCurrentIndex(newIndex);
+            scrollToItem(newIndex);
           }}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white text-xl transition-all duration-300"
           aria-label="Previous artist"
@@ -128,83 +142,79 @@ const LineupBar = () => {
         
         <div 
           ref={containerRef}
-          className="flex overflow-x-hidden scroll-smooth"
+          className="flex items-center justify-center overflow-x-hidden scroll-smooth py-8"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
-            width: '100%'
+            width: '100%',
+            height: '300px' // Fixed height for consistent layout
           }}
         >
-          {lineupArtists.map((artist, i) => (
-            <div 
-              key={`${artist.name}-${i}`}
-              ref={el => itemRefs.current[i] = el}
-              className="flex-shrink-0 relative transition-all duration-500 ease-in-out"
-              style={{
-                width: `${100 / visibleItems}%`,
-                aspectRatio: '1',
-                transform: `scale(${i === currentIndex ? '1.05' : '0.95'})`,
-                transition: 'transform 0.3s ease-in-out',
-                opacity: i >= currentIndex && i < currentIndex + visibleItems ? 1 : 0.7,
-                zIndex: i === currentIndex ? 10 : 1
-              }}
-              onClick={() => {
-                setCurrentIndex(i);
-                scrollToItem(i);
-              }}
-            >
+          {getVisibleArtists().map(({ name, image, index, position }) => {
+            const isCenter = position === 0;
+            const distanceFromCenter = Math.abs(position);
+            const scale = 1 - (distanceFromCenter * 0.1); // Scale down based on distance from center
+            const opacity = 1 - (distanceFromCenter * 0.2); // Fade out based on distance
+            const zIndex = 10 - distanceFromCenter; // Stack order
+            
+            return (
               <div 
-                className="absolute inset-0 bg-cover bg-center"
+                key={`${name}-${index}`}
+                ref={el => itemRefs.current[index] = el}
+                className={`flex-shrink-0 relative transition-all duration-500 ease-in-out cursor-pointer ${isCenter ? 'z-20' : 'z-10'}`}
                 style={{
-                  backgroundImage: `url(${artist.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  width: '18%', // Slightly less than 20% to show part of the next/prev items
+                  aspectRatio: '1',
+                  transform: `scale(${isCenter ? '1.1' : scale})`,
+                  opacity: isCenter ? 1 : Math.max(0.5, opacity),
+                  zIndex,
+                  margin: '0 1%',
+                  transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+                onClick={() => {
+                  if (position !== 0) {
+                    const newIndex = (currentIndex + position + lineupArtists.length) % lineupArtists.length;
+                    setCurrentIndex(newIndex);
+                    scrollToItem(newIndex);
+                  }
                 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <div className="text-center">
-                      <h3 className="text-white font-bold text-center text-lg md:text-xl lg:text-2xl truncate px-2">
-                        {artist.name}
-                      </h3>
+                <div 
+                  className="absolute inset-0 bg-cover bg-center rounded-lg overflow-hidden shadow-lg"
+                  style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <div className="text-center">
+                        <h3 className={`text-white font-bold text-center ${
+                          isCenter ? 'text-xl md:text-2xl' : 'text-sm md:text-lg'
+                        } truncate px-2`}>
+                          {name}
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         
         <button 
           onClick={() => {
-            setCurrentIndex(prev => (prev + 1) % lineupArtists.length);
-            scrollToItem((currentIndex + 1) % lineupArtists.length);
+            const newIndex = (currentIndex + 1) % lineupArtists.length;
+            setCurrentIndex(newIndex);
+            scrollToItem(newIndex);
           }}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white text-xl transition-all duration-300"
           aria-label="Next artist"
         >
           <FaChevronRight />
         </button>
-        
-        {/* Indicator Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
-          {Array.from({ length: Math.ceil(lineupArtists.length / visibleItems) }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                const newIndex = i * visibleItems;
-                setCurrentIndex(newIndex);
-                scrollToItem(newIndex);
-              }}
-              className={`w-3 h-3 rounded-full transition-all ${
-                Math.floor(currentIndex / visibleItems) === i 
-                  ? 'bg-white w-6' 
-                  : 'bg-white/50 hover:bg-white/70'
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
