@@ -36,8 +36,6 @@ const Navbar = () => {
     { path: '/travel', label: 'TRAVEL' },
     { path: '/info', label: 'INFO' },
     { path: '/food-drink', label: 'FOOD & DRINK' },
-    { path: '/accessibility', label: 'ACCESSIBILITY' },
-    { path: '/sustainability', label: 'SUSTAINABILITY' },
     { path: '/news', label: 'NEWS' },
     { path: '/contact', label: 'CONTACT' }
   ];
