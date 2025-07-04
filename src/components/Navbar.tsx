@@ -46,39 +46,40 @@ const Navbar = () => {
   return (
     <>
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 dark:bg-black/95 backdrop-blur-sm py-2" : "bg-black/80 py-2"
+        isScrolled ? "bg-white/95 dark:bg-black/95 backdrop-blur-sm py-2" : "bg-transparent py-4"
       }`}>
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-2">
-            {/* Left side - Logo with Date and Location */}
-            <div className="flex items-center space-x-8">
-              <Link to="/" className="hover:opacity-80 transition-opacity">
-                <img 
-                  src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
-                  alt="AGNW FEST 2026" 
-                  className="h-12 w-auto"
-                />
-              </Link>
-              
-              {/* Date and Location */}
-              <div className="hidden md:flex flex-col justify-center border-l border-white/20 pl-8">
-                <div className="text-white text-2xl font-bold tracking-tight">30 MAY 2026</div>
-                <div className="text-white/80 text-sm font-medium tracking-wide">AGNEW PARK • STRANRAER • SCOTLAND</div>
-              </div>
+          <div className="flex justify-between items-center">
+            {/* Left side - Logo */}
+            <Link 
+              to="/"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
+                alt="AGNW FEST 2026" 
+                className="h-12 md:h-16 w-auto"
+              />
+            </Link>
+            
+            {/* Center - Date and Location */}
+            <div className="hidden md:block text-white text-sm font-medium tracking-wider">
+              <div className="text-blue-400">30 MAY 2026</div>
+              <div className="text-white">AGNEW PARK • STRANRAER</div>
             </div>
 
             {/* Right side - Navigation and Controls */}
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-8">
               {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-8">
+              <div className="hidden md:flex items-center space-x-6">
                 {menuItems.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`text-sm font-bold tracking-wider transition-colors ${
+                    className={`text-sm font-medium tracking-wide transition-colors ${
                       location.pathname === item.path
-                        ? 'text-white'
-                        : 'text-white/70 hover:text-white'
+                        ? 'text-blue-400'
+                        : 'text-white hover:text-blue-300'
                     }`}
                   >
                     {item.label}
@@ -89,7 +90,7 @@ const Navbar = () => {
               {/* Tickets Button */}
               <Link
                 to="/tickets"
-                className="hidden md:block bg-white text-black hover:bg-gray-200 font-bold py-3 px-8 text-sm uppercase tracking-wider transition-colors whitespace-nowrap"
+                className="hidden md:block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded whitespace-nowrap"
               >
                 TICKETS
               </Link>
@@ -106,10 +107,10 @@ const Navbar = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={toggleMenu}
-                className="md:hidden text-white p-2 -mr-2"
+                className="md:hidden text-white hover:text-blue-300 p-2 transition-colors"
                 aria-label="Toggle menu"
               >
-                {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
