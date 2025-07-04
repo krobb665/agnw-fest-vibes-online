@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
@@ -122,12 +123,9 @@ const LineupBar = () => {
 
   return (
     <div 
-      className="w-full py-0 relative z-40 -mt-24"
+      className="w-full py-0 relative z-50"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{
-        marginBottom: '-80px'
-      }}
     >
       <div className="relative w-full max-w-full mx-auto overflow-hidden px-4">
         {/* Navigation Arrows */}

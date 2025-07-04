@@ -1,6 +1,4 @@
 import { useRef, useEffect } from 'react';
-import { FaInstagram, FaTwitter, FaTiktok, FaFacebook, FaYoutube } from 'react-icons/fa';
-import { SiApplemusic, SiSpotify } from 'react-icons/si';
 import LineupBar from './LineupBar';
 // Video is served from the root of the public directory
 const videoSource = '/3792293-hd_1920_1080_24fps.mp4';
@@ -90,7 +88,7 @@ const Hero = () => {
     };
   }, []);
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-visible bg-black pt-16 md:pt-24 z-10 pb-32 md:pb-40">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-visible bg-black pt-16 md:pt-24 z-10">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-visible bg-black">
         {/* Video element */}
@@ -165,7 +163,7 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-between">
+      <div className="relative z-10 flex-1 flex flex-col justify-center">
         <div className="flex-1 flex flex-col items-center justify-center px-4 pt-8">
           {/* Logo */}
           <div className="w-full max-w-4xl mb-8 md:mb-16">
@@ -177,15 +175,12 @@ const Hero = () => {
               />
             </div>
           </div>
-          
-          {/* Full width LineupBar with adjusted spacing */}
-          <div className="w-full mb-12 px-0">
-            <LineupBar />
-          </div>
         </div>
-        
-        {/* Bottom Gradient for Carousel */}
-        <div className="h-16 bg-gradient-to-t from-black to-transparent"></div>
+      </div>
+      
+      {/* LineupBar positioned to overlap bottom of hero */}
+      <div className="absolute bottom-0 left-0 right-0 z-50">
+        <LineupBar />
       </div>
     </section>
   );
