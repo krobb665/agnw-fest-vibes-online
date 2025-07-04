@@ -1,14 +1,23 @@
 
-import LineupBar from './LineupBar';
-
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-black pt-16 md:pt-24">
-      {/* Clean gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-black" />
+    <section className="relative min-h-screen flex items-center justify-center bg-black pt-16 md:pt-24 overflow-hidden">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/3792293-hd_1920_1080_24fps.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
       
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center items-center px-4 pb-32">
+      <div className="relative z-20 flex-1 flex flex-col justify-center items-center px-4 pb-32">
         {/* Logo */}
         <div className="w-full max-w-4xl mb-12 text-center">
           <img 
@@ -18,20 +27,12 @@ const Hero = () => {
           />
         </div>
 
-        {/* Event Details */}
+        {/* Event Details - Only location */}
         <div className="text-center text-white space-y-4">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider">
-            30TH MAY 2026
-          </div>
           <div className="text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-gray-300">
             AGNEW PARK
           </div>
         </div>
-      </div>
-      
-      {/* LineupBar positioned to overlap bottom of hero */}
-      <div className="absolute bottom-0 left-0 right-0 z-50">
-        <LineupBar />
       </div>
     </section>
   );

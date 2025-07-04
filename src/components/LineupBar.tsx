@@ -123,7 +123,7 @@ const LineupBar = () => {
 
   return (
     <div 
-      className="w-full py-0 relative z-50"
+      className="w-full py-0 relative z-50 -mt-32 mb-32"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -149,7 +149,8 @@ const LineupBar = () => {
             msOverflowStyle: 'none',
             width: '100%',
             height: '280px',
-            padding: '20px 0 60px'
+            padding: '20px 0 60px',
+            gap: '8px'
           }}
         >
           {getVisibleArtists().map(({ name, image, index, position }) => {
@@ -165,12 +166,11 @@ const LineupBar = () => {
                 ref={el => itemRefs.current[index] = el}
                 className={`flex-shrink-0 relative transition-all duration-500 ease-in-out cursor-pointer ${isCenter ? 'z-20' : 'z-10'}`}
                 style={{
-                  width: '18%', // Slightly less than 20% to show part of the next/prev items
+                  width: '18%',
                   aspectRatio: '1',
                   transform: `scale(${isCenter ? '1.1' : scale})`,
                   opacity: isCenter ? 1 : Math.max(0.5, opacity),
                   zIndex,
-                  margin: '0 1%',
                   transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
                 onClick={() => {
