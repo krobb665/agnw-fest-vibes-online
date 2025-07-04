@@ -173,7 +173,7 @@ const LineupBar = () => {
           </button>
           
           {/* Artists Grid */}
-          <div className="relative w-full overflow-hidden py-12">
+          <div className="relative w-full overflow-hidden py-8">
             <div 
               ref={containerRef}
               className="flex items-center justify-center hide-scrollbar px-4"
@@ -190,12 +190,12 @@ const LineupBar = () => {
                 <div 
                   key={`${artist.name}-${i}`}
                   ref={el => itemRefs.current[artist.index] = el}
-                  className={`relative flex-shrink-0 transition-all duration-500 ease-out mx-1.5 ${
+                  className={`relative flex-shrink-0 transition-all duration-500 ease-out mx-1 ${
                     artist.isSelected ? 'scale-110 z-10' : 'scale-95 z-1 hover:scale-100'
                   }`}
                   style={{
-                    width: 'calc(33.333% - 12px)',
-                    minWidth: '280px',
+                    width: 'calc(33.333% - 8px)',
+                    minWidth: '260px',
                     filter: artist.isSelected ? 'none' : 'brightness(0.85)'
                   }}
                   onClick={() => setCurrentIndex(artist.index)}
@@ -211,10 +211,10 @@ const LineupBar = () => {
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
                         <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <div className="text-center transform transition-transform duration-300 group-hover:scale-105">
+                          <div className="text-center">
                             <h3 
                               className={`text-white font-bold text-center truncate ${
-                                artist.isSelected ? 'text-2xl' : 'text-xl'
+                                artist.isSelected ? 'text-3xl' : 'text-2xl'
                               }`}
                             >
                               {artist.name}
@@ -233,7 +233,6 @@ const LineupBar = () => {
           </div>
         </div>
       </div>
-      
       <style dangerouslySetInnerHTML={{
         __html: `
           .hide-scrollbar::-webkit-scrollbar { display: none; }
