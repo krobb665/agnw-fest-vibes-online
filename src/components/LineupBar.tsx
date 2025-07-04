@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const LineupBar = () => {
@@ -6,6 +6,7 @@ const LineupBar = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
   const visibleItems = 4; // Show 4 items at a time
+  const [isHovered, setIsHovered] = useState(false);
 
   // Lineup data
   const lineupArtists = [
@@ -59,82 +60,41 @@ const LineupBar = () => {
     setCurrentIndex(prev => (prev - 1 + lineupArtists.length) % lineupArtists.length);
   };
 
-  // Get only 4 artists to display
+  // Get artists to display in the carousel
   const getVisibleArtists = () => {
-    // Show only 4 artists at a time
-    return lineupArtists.slice(0, 4).map((artist, index) => ({
-      ...artist,
-      index,
-      isSelected: false // No selection state
-    }));
+    const startIndex = currentIndex % lineupArtists.length;
+    const endIndex = (currentIndex + visibleItems) % lineupArtists.length;
+    
+    if (endIndex > startIndex) {
+      return lineupArtists.slice(startIndex, endIndex);
+    } else {
+      return [...lineupArtists.slice(startIndex), ...lineupArtists.slice(0, endIndex)];
+    }
   };
 
   // Auto-rotate every 6 seconds with pause on hover
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    const startTimer = () => {
-      timer = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % lineupArtists.length);
-      }, 6000);
-    };
+    if (isHovered) return;
+    
+    const timer = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % lineupArtists.length);
+    }, 6000);
+    
+    return () => clearInterval(timer);
+  }, [currentIndex, isHovered]);
+  
+  const scrollToItem = useCallback((index: number) => {
+    if (!containerRef.current) return;
     
     const container = containerRef.current;
-    if (container) {
-      container.addEventListener('mouseenter', () => clearInterval(timer));
-      container.addEventListener('mouseleave', startTimer);
-      startTimer();
-    }
+    const itemWidth = container.offsetWidth / visibleItems;
+    const scrollLeft = itemWidth * index;
     
-    return () => {
-      clearInterval(timer);
-      if (container) {
-        container.removeEventListener('mouseenter', () => {});
-        container.removeEventListener('mouseleave', startTimer);
-      }
-    };
-  }, [currentIndex]);
-  
-  // Smooth scroll and scale animation for current artist
-  useEffect(() => {
-    if (itemRefs.current[currentIndex] && containerRef.current) {
-      const container = containerRef.current;
-      const selectedItem = itemRefs.current[currentIndex];
-      const containerWidth = container.offsetWidth;
-      const itemLeft = selectedItem.offsetLeft;
-      const itemWidth = selectedItem.offsetWidth;
-      const scrollLeft = itemLeft - (containerWidth / 2) + (itemWidth / 2);
-      
-      // Smooth scroll
-      container.scrollTo({
-        left: scrollLeft,
-        behavior: 'smooth'
-      });
-      
-      // Add active class for animation
-      selectedItem.classList.add('active-artist');
-      
-      // Remove active class from other items
-      itemRefs.current.forEach((item, index) => {
-        if (index !== currentIndex && item) {
-          item.classList.remove('active-artist');
-        }
-      });
-    }
-  }, [currentIndex]);
-
-  // Handle scroll to current item
-  useEffect(() => {
-    if (containerRef.current) {
-      const container = containerRef.current;
-      const itemWidth = container.offsetWidth / visibleItems;
-      const scrollLeft = itemWidth * currentIndex;
-      
-      container.scrollTo({
-        left: scrollLeft,
-        behavior: 'smooth'
-      });
-    }
-  }, [currentIndex]);
+    container.scrollTo({
+      left: scrollLeft,
+      behavior: 'smooth'
+    });
+  }, [visibleItems]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -148,15 +108,49 @@ const LineupBar = () => {
   }, []);
 
   return (
-    <div className="w-full py-0 relative z-20 -mt-24">
-      <div className="w-full max-w-full mx-auto">
-        <div className="grid grid-cols-4 gap-0 w-full">
-          {getVisibleArtists().map((artist, i) => (
+    <div 
+      className="w-full py-0 relative z-20 -mt-24"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative w-full max-w-full mx-auto overflow-hidden">
+        {/* Navigation Arrows */}
+        <button 
+          onClick={() => {
+            setCurrentIndex(prev => (prev - 1 + lineupArtists.length) % lineupArtists.length);
+            scrollToItem((currentIndex - 1 + lineupArtists.length) % lineupArtists.length);
+          }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white text-xl transition-all duration-300"
+          aria-label="Previous artist"
+        >
+          <FaChevronLeft />
+        </button>
+        
+        <div 
+          ref={containerRef}
+          className="flex overflow-x-hidden scroll-smooth"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            width: '100%'
+          }}
+        >
+          {lineupArtists.map((artist, i) => (
             <div 
               key={`${artist.name}-${i}`}
-              className="relative w-full"
+              ref={el => itemRefs.current[i] = el}
+              className="flex-shrink-0 relative transition-all duration-500 ease-in-out"
               style={{
+                width: `${100 / visibleItems}%`,
                 aspectRatio: '1',
+                transform: `scale(${i === currentIndex ? '1.05' : '0.95'})`,
+                transition: 'transform 0.3s ease-in-out',
+                opacity: i >= currentIndex && i < currentIndex + visibleItems ? 1 : 0.7,
+                zIndex: i === currentIndex ? 10 : 1
+              }}
+              onClick={() => {
+                setCurrentIndex(i);
+                scrollToItem(i);
               }}
             >
               <div 
@@ -170,7 +164,7 @@ const LineupBar = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <div className="text-center">
-                      <h3 className="text-white font-bold text-center text-xl md:text-2xl truncate px-2">
+                      <h3 className="text-white font-bold text-center text-lg md:text-xl lg:text-2xl truncate px-2">
                         {artist.name}
                       </h3>
                     </div>
@@ -180,8 +174,38 @@ const LineupBar = () => {
             </div>
           ))}
         </div>
+        
+        <button 
+          onClick={() => {
+            setCurrentIndex(prev => (prev + 1) % lineupArtists.length);
+            scrollToItem((currentIndex + 1) % lineupArtists.length);
+          }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white text-xl transition-all duration-300"
+          aria-label="Next artist"
+        >
+          <FaChevronRight />
+        </button>
+        
+        {/* Indicator Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
+          {Array.from({ length: Math.ceil(lineupArtists.length / visibleItems) }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                const newIndex = i * visibleItems;
+                setCurrentIndex(newIndex);
+                scrollToItem(newIndex);
+              }}
+              className={`w-3 h-3 rounded-full transition-all ${
+                Math.floor(currentIndex / visibleItems) === i 
+                  ? 'bg-white w-6' 
+                  : 'bg-white/50 hover:bg-white/70'
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
-
     </div>
   );
 };
