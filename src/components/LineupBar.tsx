@@ -61,15 +61,12 @@ const LineupBar = () => {
 
   // Get the current and adjacent artists
   const getVisibleArtists = () => {
-    const total = lineupArtists.length;
-    const prevIndex = (currentIndex - 1 + total) % total;
-    const nextIndex = (currentIndex + 1) % total;
-    
-    return [
-      { ...lineupArtists[prevIndex], index: prevIndex, isSelected: false },
-      { ...lineupArtists[currentIndex], index: currentIndex, isSelected: true },
-      { ...lineupArtists[nextIndex], index: nextIndex, isSelected: false }
-    ];
+    // Show all artists in the grid
+    return lineupArtists.map((artist, index) => ({
+      ...artist,
+      index,
+      isSelected: index === currentIndex
+    }));
   };
 
   // Auto-rotate every 6 seconds with pause on hover
@@ -151,8 +148,8 @@ const LineupBar = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden py-8 px-0 bg-transparent">
-      <div className="w-full max-w-full mx-auto px-0">
+    <div className="w-full bg-black py-8">
+      <div className="w-full max-w-7xl mx-auto px-4">
         
         <div className="relative group">
           {/* Navigation Arrows */}
@@ -176,31 +173,29 @@ const LineupBar = () => {
           <div className="relative w-full overflow-hidden py-8">
             <div 
               ref={containerRef}
-              className="flex items-center justify-center hide-scrollbar px-4"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full px-4"
               style={{
-                scrollBehavior: 'smooth',
-                scrollSnapType: 'x mandatory',
-                WebkitOverflowScrolling: 'touch',
                 scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)'
+                msOverflowStyle: 'none'
               }}
             >
               {getVisibleArtists().map((artist, i) => (
                 <div 
                   key={`${artist.name}-${i}`}
                   ref={el => itemRefs.current[artist.index] = el}
-                  className={`relative flex-shrink-0 transition-all duration-500 ease-out mx-2 ${
+                  className={`relative transition-all duration-300 ease-out transform ${
                     artist.isSelected ? 'scale-105 z-10' : 'scale-95 z-1 hover:scale-100'
                   }`}
                   style={{
-                    width: 'calc(25% - 16px)',
-                    minWidth: '220px',
-                    filter: artist.isSelected ? 'none' : 'brightness(0.85)'
+                    width: '100%',
+                    aspectRatio: '1',
+                    filter: artist.isSelected ? 'none' : 'brightness(0.85)',
+                    maxWidth: '300px',
+                    margin: '0 auto'
                   }}
                   onClick={() => setCurrentIndex(artist.index)}
                 >
-                  <div className="relative w-full pb-[100%] bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <div className="absolute inset-0 bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
                     <div 
                       className="absolute inset-0 bg-cover bg-center"
                       style={{
