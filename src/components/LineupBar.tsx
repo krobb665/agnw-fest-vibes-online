@@ -27,7 +27,7 @@ const LineupBar = () => {
 
   return (
     <div 
-      className="w-full py-0 relative z-50 -mt-32 mb-32"
+      className="w-full py-0 relative z-50 -mt-24 mb-16"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

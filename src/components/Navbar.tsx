@@ -74,8 +74,28 @@ const Navbar = () => {
               </Link>
               
               {/* Date and Location */}
-              <div className="hidden md:block text-white text-sm font-medium tracking-wider">
-                <div className="text-blue-400">30 MAY 2026</div>
+              <div className="hidden md:flex items-center space-x-8">
+                <div className="text-white text-sm font-medium tracking-wider">
+                  <div className="text-blue-400">30 MAY 2026</div>
+                  <div className="text-white">AGNEW PARK • STRANRAER</div>
+                </div>
+                
+                {/* Desktop Menu */}
+                <div className="hidden md:flex items-center space-x-6">
+                  {menuItems.slice(0, 5).map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`text-sm font-medium tracking-wide transition-colors ${
+                        location.pathname === item.path
+                          ? 'text-blue-400'
+                          : 'text-white hover:text-blue-300'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -87,6 +107,28 @@ const Navbar = () => {
               >
                 TICKETS
               </Link>
+              
+              {/* More Menu Dropdown */}
+              <div className="hidden md:block relative group">
+                <button className="text-white hover:text-blue-300 text-sm font-medium tracking-wide px-2 py-1">
+                  MORE
+                </button>
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 hidden group-hover:block z-50">
+                  {menuItems.slice(5, 10).map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`block px-4 py-2 text-sm ${
+                        location.pathname === item.path
+                          ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
+                          : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
               
               {/* Theme Toggle */}
               <button
