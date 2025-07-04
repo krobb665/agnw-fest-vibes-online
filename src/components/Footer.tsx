@@ -1,6 +1,7 @@
 
 import { FaInstagram, FaTwitter, FaTiktok, FaFacebook, FaYoutube } from 'react-icons/fa';
 import { SiApplemusic, SiSpotify } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -23,7 +24,7 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm font-bold tracking-wider">
             <a href="#" className="hover:text-gray-300 transition-colors">© 2026 AGNW Fest</a>
             <span className="text-gray-500">•</span>
-            <a href="/terms" className="hover:text-gray-300 transition-colors">Ticket Terms</a>
+            <Link to="/terms" className="hover:text-gray-300 transition-colors">Ticket Terms</Link>
             <span className="text-gray-500">•</span>
             <a href="#" className="hover:text-gray-300 transition-colors">Terms of Use</a>
             <span className="text-gray-500">•</span>
