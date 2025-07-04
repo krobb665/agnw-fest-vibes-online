@@ -122,9 +122,12 @@ const LineupBar = () => {
 
   return (
     <div 
-      className="w-full py-0 relative z-20 -mt-24"
+      className="w-full py-0 relative z-40 -mt-16"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{
+        marginBottom: '-80px' // Pull up to overlap with Hero
+      }}
     >
       <div className="relative w-full max-w-full mx-auto overflow-hidden">
         {/* Navigation Arrows */}
@@ -142,12 +145,13 @@ const LineupBar = () => {
         
         <div 
           ref={containerRef}
-          className="flex items-center justify-center overflow-x-hidden scroll-smooth py-8"
+          className="flex items-center justify-center overflow-x-hidden scroll-smooth py-4"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
             width: '100%',
-            height: '300px' // Fixed height for consistent layout
+            height: '280px', // Slightly reduced height
+            paddingBottom: '60px' // Add bottom padding to ensure content isn't cut off
           }}
         >
           {getVisibleArtists().map(({ name, image, index, position }) => {
@@ -163,13 +167,13 @@ const LineupBar = () => {
                 ref={el => itemRefs.current[index] = el}
                 className={`flex-shrink-0 relative transition-all duration-500 ease-in-out cursor-pointer ${isCenter ? 'z-20' : 'z-10'}`}
                 style={{
-                  width: '18%', // Slightly less than 20% to show part of the next/prev items
+                  width: '22%', // Increased width for larger squares
                   aspectRatio: '1',
-                  transform: `scale(${isCenter ? '1.1' : scale})`,
-                  opacity: isCenter ? 1 : Math.max(0.5, opacity),
+                  transform: `scale(${isCenter ? '1.15' : scale})`,
+                  opacity: isCenter ? 1 : Math.max(0.6, opacity),
                   zIndex,
-                  margin: '0 1%',
-                  transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                  margin: '0 -1%', // Negative margin to bring items closer
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
                 onClick={() => {
                   if (position !== 0) {
@@ -180,7 +184,7 @@ const LineupBar = () => {
                 }}
               >
                 <div 
-                  className="absolute inset-0 bg-cover bg-center rounded-lg overflow-hidden shadow-lg"
+                  className="absolute inset-0 bg-cover bg-center rounded-lg overflow-hidden shadow-2xl"
                   style={{
                     backgroundImage: `url(${image})`,
                     backgroundSize: 'cover',

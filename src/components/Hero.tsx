@@ -90,7 +90,7 @@ const Hero = () => {
     };
   }, []);
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-black pt-24 md:pt-32 z-10">
+    <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-black pt-24 md:pt-32 z-10 pb-40 md:pb-48">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-visible bg-black">
         {/* Video element */}
@@ -168,7 +168,7 @@ const Hero = () => {
       <div className="relative z-10 flex-1 flex flex-col justify-between">
         <div className="flex-1 flex flex-col items-center justify-center px-4 pt-8">
           {/* Logo */}
-          <div className="w-full max-w-4xl mb-16 md:mb-24">
+          <div className="w-full max-w-4xl mb-8 md:mb-16">
             <div className="transform transition-all duration-500 mb-8">
               <img 
                 src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
