@@ -90,7 +90,7 @@ const Hero = () => {
     };
   }, []);
   return (
-    <section className="relative h-[calc(100vh-200px)] flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-24">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-24">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden bg-black">
         {/* Video element */}
@@ -184,7 +184,8 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Remove bottom gradient */}
+        {/* Bottom Gradient for Carousel */}
+        <div className="h-16 bg-gradient-to-t from-black to-transparent"></div>
       </div>
     </section>
   );
