@@ -76,7 +76,6 @@ const Navbar = () => {
               {/* Date and Location */}
               <div className="hidden md:block text-white text-sm font-medium tracking-wider">
                 <div className="text-blue-400">30 MAY 2026</div>
-                <div>AGNEW PARK • STRANRAER • SCOTLAND</div>
               </div>
             </div>
 
