@@ -22,21 +22,30 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm font-bold tracking-wider">
-            <a href="#" className="hover:text-gray-300 transition-colors">© 2026 AGNW Fest</a>
+            <Link to="/" className="hover:text-gray-300 transition-colors">© 2026 AGNW Fest</Link>
             <span className="text-gray-500">•</span>
             <Link to="/terms" className="hover:text-gray-300 transition-colors">Ticket Terms</Link>
             <span className="text-gray-500">•</span>
-            <a href="#" className="hover:text-gray-300 transition-colors">Terms of Use</a>
+            <Link to="/terms" className="hover:text-gray-300 transition-colors">Terms of Use</Link>
             <span className="text-gray-500">•</span>
-            <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
+            <Link to="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
             <span className="text-gray-500">•</span>
-            <a href="#" className="hover:text-gray-300 transition-colors">Drink Aware</a>
+            <Link to="/drink-aware" className="hover:text-gray-300 transition-colors">Drink Aware</Link>
             <span className="text-gray-500">•</span>
-            <a href="#" className="hover:text-gray-300 transition-colors">Accessibility</a>
+            <Link to="/accessibility" className="hover:text-gray-300 transition-colors">Accessibility</Link>
             <span className="text-gray-500">•</span>
-            <a href="#" className="hover:text-gray-300 transition-colors">Contact Us</a>
+            <Link to="/contact" className="hover:text-gray-300 transition-colors">Contact Us</Link>
             <span className="text-gray-500">•</span>
-            <a href="#" className="hover:text-gray-300 transition-colors">Manage my cookies</a>
+            <button 
+              onClick={() => {
+                // This would typically open a cookie consent manager
+                document.cookie = 'cookieConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                window.location.reload();
+              }} 
+              className="hover:text-gray-300 transition-colors"
+            >
+              Manage my cookies
+            </button>
           </div>
           
           <div className="flex justify-center space-x-6 mb-8">
