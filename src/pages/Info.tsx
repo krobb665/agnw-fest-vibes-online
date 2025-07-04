@@ -5,11 +5,13 @@ import PageHeader from "@/components/PageHeader";
 import EventInfo from "@/components/EventInfo";
 import { motion } from "framer-motion";
 import { 
-  Music, Utensils, Camera, Shield, Car, Tent, 
-  User, Eye, Ear, Recycle, Droplets, Sun, Leaf, Mail
+  Music, Utensils, Camera, Shield, Car, Tent, User, 
+  Eye, Ear, Recycle, Droplets, Sun, Leaf, Mail,
+  MapPin, Clock, Bus, Train, Plane, Coffee, Wine
 } from "lucide-react";
 
 const Info = () => {
+  // Festival Tips
   const festivalTips = [
     {
       icon: <Music className="w-6 h-6 text-blue-400" />,
@@ -30,19 +32,10 @@ const Info = () => {
       icon: <Shield className="w-6 h-6 text-blue-400" />,
       title: "Stay Safe",
       tip: "Download What3Words app for easy location sharing. Keep emergency contacts handy and stay hydrated."
-    },
-    {
-      icon: <Car className="w-6 h-6 text-blue-400" />,
-      title: "Getting There",
-      tip: "Book transport in advance - shuttle buses run from Stranraer town center every 15 minutes during festival hours."
-    },
-    {
-      icon: <Tent className="w-6 h-6 text-blue-400" />,
-      title: "What to Bring",
-      tip: "Comfortable shoes, layers for Scottish weather, portable charger, and a positive attitude! Small bags only (A4 size)."
     }
   ];
 
+  // Accessibility Features
   const accessibilityFeatures = [
     {
       icon: <User className="w-6 h-6 text-purple-400" />,
@@ -61,6 +54,7 @@ const Info = () => {
     }
   ];
 
+  // Sustainability Initiatives
   const sustainabilityInitiatives = [
     {
       icon: <Recycle className="w-6 h-6 text-green-400" />,
@@ -84,30 +78,75 @@ const Info = () => {
     }
   ];
 
-  const faqs = [
+  // Transport Options
+  const transportOptions = [
     {
-      question: "What time does the festival start and end?",
-      answer: "Gates open at 1:00 PM and the event ends at 10:30 PM. Last entry is at 8:30 PM."
+      icon: <Train className="w-8 h-8" />,
+      title: "BY TRAIN",
+      description: "Stranraer railway station is just a 10-minute walk from Agnew Park.",
+      details: [
+        "Direct services from Glasgow Central (3.5 hours)",
+        "Connects from major Scottish cities",
+        "Special shuttle buses from station",
+        "Book in advance for best prices"
+      ]
     },
     {
-      question: "Can I bring my own food and drinks?",
-      answer: "Only sealed water bottles (up to 500ml) are allowed. No other outside food or drinks are permitted, except for medical or dietary requirements."
+      icon: <Car className="w-8 h-8" />,
+      title: "BY CAR",
+      description: "Easy access via major Scottish routes.",
+      details: [
+        "A77 from Glasgow (2.5 hours)",
+        "A75 from Edinburgh (3 hours)",
+        "Limited parking - pre-booking essential",
+        "Alternative parking with shuttle service"
+      ]
     },
     {
-      question: "Is there an age limit?",
-      answer: "AGNW Fest is a 16+ event. Under 18s must be accompanied by an adult aged 21 or over. ID will be required."
+      icon: <Bus className="w-8 h-8" />,
+      title: "BY BUS",
+      description: "Regular bus services to Stranraer from across Scotland.",
+      details: [
+        "Scottish Citylink services",
+        "Local bus routes",
+        "Festival shuttle buses",
+        "Drop-off points near venue"
+      ]
     },
     {
-      question: "What payment methods are accepted?",
-      answer: "We're a cashless event. Contactless payments are accepted at all bars, food stalls, and merchandise stands."
+      icon: <Plane className="w-8 h-8" />,
+      title: "BY FERRY",
+      description: "Stena Line ferries from Belfast to Cairnryan.",
+      details: [
+        "Belfast to Cairnryan (7 miles away)",
+        "Special festival shuttle buses",
+        "Book ferry in advance",
+        "Scenic journey across Irish Sea"
+      ]
+    }
+  ];
+
+  // Food Options
+  const foodOptions = [
+    {
+      icon: <Utensils className="w-6 h-6" />,
+      title: "Street Food",
+      description: "Gourmet food trucks and local vendors serving everything from Scottish classics to international cuisine."
     },
     {
-      question: "What should I do if I lose something?",
-      answer: "Visit the information desk or lost property point. After the event, contact lostproperty@agnwfest.com"
+      icon: <Coffee className="w-6 h-6" />,
+      title: "Specialty Coffee",
+      description: "Local roasters and baristas serving premium coffee and specialty drinks to keep you energized."
     },
     {
-      question: "What happens if it rains?",
-      answer: "The festival is rain or shine! Please check the weather forecast and dress appropriately. Some covered areas will be available."
+      icon: <Wine className="w-6 h-6" />,
+      title: "Local Drinks",
+      description: "Scottish craft beers, whisky, and local spirits alongside non-alcoholic options."
+    },
+    {
+      icon: <Leaf className="w-6 h-6" />,
+      title: "Healthy Options",
+      description: "Vegan, vegetarian, and gluten-free options available throughout the festival site."
     }
   ];
 
@@ -125,40 +164,121 @@ const Info = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Quick Navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <a href="#festival-tips" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors">
+          <a href="#travel" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors">
+            Travel
+          </a>
+          <a href="#food-drink" className="px-4 py-2 bg-orange-600 hover:bg-orange-700 rounded-full transition-colors">
+            Food & Drink
+          </a>
+          <a href="#festival-tips" className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-full transition-colors">
             Festival Tips
           </a>
           <a href="#accessibility" className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-full transition-colors">
             Accessibility
           </a>
-          <a href="#sustainability" className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-full transition-colors">
+          <a href="#sustainability" className="px-4 py-2 bg-teal-600 hover:bg-teal-700 rounded-full transition-colors">
             Sustainability
-          </a>
-          <a href="#faq" className="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 rounded-full transition-colors">
-            FAQ
           </a>
         </div>
 
-        {/* Event Info Component */}
+        {/* Event Info */}
         <div className="mb-16">
           <EventInfo />
         </div>
 
+        {/* Travel Section */}
+        <section id="travel" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Travel Information
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {transportOptions.map((option, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-800 p-6 rounded-xl hover:bg-gray-700 transition-colors"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="text-blue-400 mr-4">
+                    {option.icon}
+                  </div>
+                  <h3 className="text-xl font-bold">{option.title}</h3>
+                </div>
+                <p className="text-gray-300 mb-3">{option.description}</p>
+                <ul className="space-y-2">
+                  {option.details.map((detail, i) => (
+                    <li key={i} className="text-gray-400 text-sm flex items-start">
+                      <span className="text-blue-400 mr-2">•</span>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a 
+              href="https://maps.app.goo.gl/example" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+            >
+              <MapPin className="w-5 h-5 mr-2" />
+              View on Google Maps
+            </a>
+          </div>
+        </section>
+
+        {/* Food & Drink Section */}
+        <section id="food-drink" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            Food & Drink
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {foodOptions.map((option, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-800 p-6 rounded-xl text-center hover:bg-gray-700 transition-colors"
+              >
+                <div className="text-orange-400 mb-3 flex justify-center">
+                  {option.icon}
+                </div>
+                <h3 className="text-lg font-bold mb-2">{option.title}</h3>
+                <p className="text-gray-300 text-sm">{option.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center bg-gradient-to-r from-orange-500/20 to-red-500/20 p-8 rounded-xl border border-orange-400/30">
+            <h3 className="text-2xl font-bold mb-4 text-orange-400">Coming Soon</h3>
+            <p className="text-gray-300">
+              We're curating an amazing selection of food and drink vendors. Full details will be announced closer to the festival date.
+            </p>
+          </div>
+        </section>
+
         {/* Festival Tips Section */}
         <section id="festival-tips" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
             Festival Tips
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {festivalTips.map((tip, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors"
               >
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-3">
                   {tip.icon}
                   <h3 className="text-xl font-semibold ml-2">{tip.title}</h3>
                 </div>
@@ -178,11 +298,12 @@ const Info = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors"
               >
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-3">
                   {feature.icon}
                   <h3 className="text-xl font-semibold ml-2">{feature.title}</h3>
                 </div>
@@ -202,36 +323,16 @@ const Info = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors"
               >
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-3">
                   {initiative.icon}
                   <h3 className="text-xl font-semibold ml-2">{initiative.title}</h3>
                 </div>
                 <p className="text-gray-300">{initiative.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section id="faq" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-            Frequently Asked Questions
-          </h2>
-          <div className="max-w-3xl mx-auto">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className="mb-6"
-              >
-                <h3 className="text-xl font-semibold mb-2">{faq.question}</h3>
-                <p className="text-gray-300">{faq.answer}</p>
               </motion.div>
             ))}
           </div>

@@ -9,10 +9,8 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Lineup from "./pages/Lineup";
 import Tickets from "./pages/Tickets";
-import Travel from "./pages/Travel";
 import Info from "./pages/Info";
 import TermsAndConditions from "./pages/TermsAndConditions";
-import FoodDrink from "./pages/FoodDrink";
 import Accessibility from "./pages/Accessibility";
 import Sustainability from "./pages/Sustainability";
 import News from "./pages/News";
@@ -34,10 +32,8 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/lineup" element={<Lineup />} />
           <Route path="/tickets" element={<Tickets />} />
-          <Route path="/travel" element={<Travel />} />
           <Route path="/info" element={<Info />} />
           <Route path="/terms" element={<TermsAndConditions />} />
-          <Route path="/food-drink" element={<FoodDrink />} />
           <Route path="/accessibility" element={<Accessibility />} />
           <Route path="/sustainability" element={<Sustainability />} />
           <Route path="/news" element={<News />} />
