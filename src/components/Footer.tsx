@@ -23,6 +23,8 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm font-bold tracking-wider">
             <a href="#" className="hover:text-gray-300 transition-colors">© 2026 AGNW Fest</a>
             <span className="text-gray-500">•</span>
+            <a href="/terms" className="hover:text-gray-300 transition-colors">Ticket Terms</a>
+            <span className="text-gray-500">•</span>
             <a href="#" className="hover:text-gray-300 transition-colors">Terms of Use</a>
             <span className="text-gray-500">•</span>
             <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
