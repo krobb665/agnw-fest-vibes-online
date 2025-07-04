@@ -90,9 +90,9 @@ const Hero = () => {
     };
   }, []);
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-24">
+    <section className="relative h-[calc(100vh-100px)] flex items-center justify-center overflow-visible bg-black pt-24 md:pt-24 z-10">
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden bg-black">
+      <div className="absolute inset-0 w-full h-full overflow-visible bg-black">
         {/* Video element */}
         <video
           ref={videoRef}

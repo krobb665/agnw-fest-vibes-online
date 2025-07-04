@@ -59,13 +59,13 @@ const LineupBar = () => {
     setCurrentIndex(prev => (prev - 1 + lineupArtists.length) % lineupArtists.length);
   };
 
-  // Get the current and adjacent artists
+  // Get only 4 artists to display
   const getVisibleArtists = () => {
-    // Show all artists in the grid
-    return lineupArtists.map((artist, index) => ({
+    // Show only 4 artists at a time
+    return lineupArtists.slice(0, 4).map((artist, index) => ({
       ...artist,
       index,
-      isSelected: index === currentIndex
+      isSelected: false // No selection state
     }));
   };
 
@@ -148,130 +148,40 @@ const LineupBar = () => {
   }, []);
 
   return (
-    <div className="w-full bg-black py-8">
-      <div className="w-full max-w-7xl mx-auto px-4">
-        
-        <div className="relative group">
-          {/* Navigation Arrows */}
-          <button 
-            onClick={prevArtist}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/80 hover:bg-black rounded-full flex items-center justify-center text-white text-xl transition-all duration-300 opacity-0 group-hover:opacity-100"
-            aria-label="Previous artist"
-          >
-            <FaChevronLeft />
-          </button>
-          
-          <button 
-            onClick={nextArtist}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/80 hover:bg-black rounded-full flex items-center justify-center text-white text-xl transition-all duration-300 opacity-0 group-hover:opacity-100"
-            aria-label="Next artist"
-          >
-            <FaChevronRight />
-          </button>
-          
-          {/* Artists Grid */}
-          <div className="relative w-full overflow-hidden py-8">
+    <div className="w-full py-0 relative z-20 -mt-24">
+      <div className="w-full max-w-full mx-auto">
+        <div className="grid grid-cols-4 gap-0 w-full">
+          {getVisibleArtists().map((artist, i) => (
             <div 
-              ref={containerRef}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full px-4"
+              key={`${artist.name}-${i}`}
+              className="relative w-full"
               style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none'
+                aspectRatio: '1',
               }}
             >
-              {getVisibleArtists().map((artist, i) => (
-                <div 
-                  key={`${artist.name}-${i}`}
-                  ref={el => itemRefs.current[artist.index] = el}
-                  className={`relative transition-all duration-300 ease-out transform ${
-                    artist.isSelected ? 'scale-105 z-10' : 'scale-95 z-1 hover:scale-100'
-                  }`}
-                  style={{
-                    width: '100%',
-                    aspectRatio: '1',
-                    filter: artist.isSelected ? 'none' : 'brightness(0.85)',
-                    maxWidth: '300px',
-                    margin: '0 auto'
-                  }}
-                  onClick={() => setCurrentIndex(artist.index)}
-                >
-                  <div className="absolute inset-0 bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${artist.image})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                      }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <div className="text-center">
-                            <h3 
-                              className={`text-white font-bold text-center truncate ${
-                                artist.isSelected ? 'text-3xl' : 'text-2xl'
-                              }`}
-                            >
-                              {artist.name}
-                            </h3>
-                            {artist.isSelected && (
-                              <div className="h-1 bg-gradient-to-r from-transparent via-white to-transparent w-3/4 mx-auto mt-2 rounded-full opacity-0 animate-fadeIn"></div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${artist.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="text-center">
+                      <h3 className="text-white font-bold text-center text-xl md:text-2xl truncate px-2">
+                        {artist.name}
+                      </h3>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .hide-scrollbar::-webkit-scrollbar { display: none; }
-          .hide-scrollbar { 
-            -ms-overflow-style: none; 
-            scrollbar-width: none; 
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-          }
-          
-          /* Enhanced transitions */
-          .transition-all {
-            transition-property: all;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 500ms;
-          }
-          
-          /* Active artist animation */
-          .active-artist {
-            animation: pulse 3s infinite;
-          }
-          
-          @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-          }
-          
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          
-          .animate-fadeIn {
-            animation: fadeIn 0.5s ease-out forwards;
-            animation-delay: 0.3s;
-          }
-          
-          /* Hover effects */
-          .hover\:scale-105:hover {
-            transform: scale(1.05);
-          }
-        `
-      }} />
+
     </div>
   );
 };
