@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LineupBar from "@/components/LineupBar";
+import FullLineup from "@/components/FullLineup";
+import NewsSection from "@/components/NewsSection";
 
 const Index = () => {
   return (
@@ -11,6 +13,8 @@ const Index = () => {
       <main className="relative">
         <Hero />
         <LineupBar />
+        <FullLineup />
+        <NewsSection />
       </main>
       <Footer />
     </div>
