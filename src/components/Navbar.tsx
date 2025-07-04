@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaInstagram, FaTwitter, FaTiktok, FaYoutube } from 'react-icons/fa';
-import { SiApplemusic, SiSpotify } from 'react-icons/si';
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,14 +39,7 @@ const Navbar = () => {
     { path: '/accessibility', label: 'ACCESSIBILITY' },
     { path: '/sustainability', label: 'SUSTAINABILITY' },
     { path: '/news', label: 'NEWS' },
-    { path: '/contact', label: 'CONTACT' },
-    { path: '#', label: 'SOCIAL', isDivider: true },
-    { path: 'https://instagram.com', label: 'Instagram', icon: <FaInstagram className="mr-2" />, isExternal: true },
-    { path: 'https://twitter.com', label: 'Twitter', icon: <FaTwitter className="mr-2" />, isExternal: true },
-    { path: 'https://tiktok.com', label: 'TikTok', icon: <FaTiktok className="mr-2" />, isExternal: true },
-    { path: 'https://youtube.com', label: 'YouTube', icon: <FaYoutube className="mr-2" />, isExternal: true },
-    { path: 'https://spotify.com', label: 'Spotify', icon: <SiSpotify className="mr-2" />, isExternal: true },
-    { path: 'https://music.apple.com', label: 'Apple Music', icon: <SiApplemusic className="mr-2" />, isExternal: true }
+    { path: '/contact', label: 'CONTACT' }
   ];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -161,39 +153,19 @@ const Navbar = () => {
               {/* Menu Content */}
               <div className="pt-16">
                 <ul className="space-y-2">
-                  {menuItems.map((item, index) => (
-                    <li key={item.path + index}>
-                      {item.isDivider ? (
-                        <div className="border-t border-gray-200 dark:border-gray-800 my-4"></div>
-                      ) : item.isExternal ? (
-                        <a
-                          href={item.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block py-3 px-4 rounded-md transition-colors text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          <div className="flex items-center">
-                            {item.icon}
-                            <span>{item.label}</span>
-                          </div>
-                        </a>
-                      ) : (
-                        <Link
-                          to={item.path}
-                          className={`block py-3 px-4 rounded-md transition-colors ${
-                            location.pathname === item.path
-                              ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
-                              : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
-                          }`}
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          <div className="flex items-center">
-                            {item.icon}
-                            <span>{item.label}</span>
-                          </div>
-                        </Link>
-                      )}
+                  {menuItems.map((item) => (
+                    <li key={item.path}>
+                      <Link
+                        to={item.path}
+                        className={`block py-3 px-4 rounded-md transition-colors ${
+                          location.pathname === item.path
+                            ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
+                            : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
