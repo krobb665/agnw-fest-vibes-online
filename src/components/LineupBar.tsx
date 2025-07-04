@@ -126,7 +126,7 @@ const LineupBar = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        marginBottom: '-80px' // Pull up to overlap with Hero
+        marginBottom: '-60px' // Less overlap with Hero
       }}
     >
       <div className="relative w-full max-w-full mx-auto overflow-hidden">
@@ -150,8 +150,8 @@ const LineupBar = () => {
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
             width: '100%',
-            height: '280px', // Slightly reduced height
-            paddingBottom: '60px' // Add bottom padding to ensure content isn't cut off
+            height: '260px', // Reduced height
+            paddingBottom: '40px' // Reduced bottom padding
           }}
         >
           {getVisibleArtists().map(({ name, image, index, position }) => {
@@ -167,12 +167,12 @@ const LineupBar = () => {
                 ref={el => itemRefs.current[index] = el}
                 className={`flex-shrink-0 relative transition-all duration-500 ease-in-out cursor-pointer ${isCenter ? 'z-20' : 'z-10'}`}
                 style={{
-                  width: '22%', // Increased width for larger squares
+                  width: '20%', // Slightly reduced width for better spacing
                   aspectRatio: '1',
                   transform: `scale(${isCenter ? '1.15' : scale})`,
                   opacity: isCenter ? 1 : Math.max(0.6, opacity),
                   zIndex,
-                  margin: '0 -1%', // Negative margin to bring items closer
+                  margin: '0 0.5%', // Positive margin for more space between items
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
                 onClick={() => {
