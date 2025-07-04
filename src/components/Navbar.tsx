@@ -60,89 +60,64 @@ const Navbar = () => {
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-6">
-              {/* Logo */}
-              <Link 
-                to="/"
-                className="hover:opacity-80 transition-opacity"
-              >
-                <img 
-                  src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
-                  alt="AGNW FEST 2026" 
-                  className="h-12 md:h-16 w-auto"
-                />
-              </Link>
-              
-              {/* Date and Location */}
-              <div className="hidden md:flex items-center space-x-8">
-                <div className="text-white text-sm font-medium tracking-wider">
-                  <div className="text-blue-400">30 MAY 2026</div>
-                  <div className="text-white">AGNEW PARK • STRANRAER</div>
-                </div>
-                
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center space-x-6">
-                  {menuItems.slice(0, 5).map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      className={`text-sm font-medium tracking-wide transition-colors ${
-                        location.pathname === item.path
-                          ? 'text-blue-400'
-                          : 'text-white hover:text-blue-300'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+            {/* Left side - Logo */}
+            <Link 
+              to="/"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 
+                alt="AGNW FEST 2026" 
+                className="h-12 md:h-16 w-auto"
+              />
+            </Link>
+            
+            {/* Center - Date and Location */}
+            <div className="hidden md:block text-white text-sm font-medium tracking-wider">
+              <div className="text-blue-400">30 MAY 2026</div>
+              <div className="text-white">AGNEW PARK • STRANRAER</div>
             </div>
 
-            {/* Right side controls */}
-            <div className="flex items-center space-x-4">
+            {/* Right side - Navigation and Controls */}
+            <div className="flex items-center space-x-8">
+              {/* Desktop Menu */}
+              <div className="hidden md:flex items-center space-x-6">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`text-sm font-medium tracking-wide transition-colors ${
+                      location.pathname === item.path
+                        ? 'text-blue-400'
+                        : 'text-white hover:text-blue-300'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              
+              {/* Tickets Button */}
               <Link
                 to="/tickets"
-                className="hidden md:block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded"
+                className="hidden md:block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-2 px-6 text-sm uppercase tracking-wider transition-colors rounded whitespace-nowrap"
               >
                 TICKETS
               </Link>
               
-              {/* More Menu Dropdown */}
-              <div className="hidden md:block relative group">
-                <button className="text-white hover:text-blue-300 text-sm font-medium tracking-wide px-2 py-1">
-                  MORE
-                </button>
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 hidden group-hover:block z-50">
-                  {menuItems.slice(5, 10).map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      className={`block px-4 py-2 text-sm ${
-                        location.pathname === item.path
-                          ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
-                          : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="text-gray-800 dark:text-white p-2 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+                className="text-white hover:text-blue-300 p-2 transition-colors"
                 aria-label="Toggle theme"
               >
                 {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
               </button>
               
-              {/* Menu Button */}
+              {/* Mobile Menu Button */}
               <button
                 onClick={toggleMenu}
-                className="text-gray-800 dark:text-white p-2 hover:text-blue-500 dark:hover:text-blue-400 transition-colors z-50 relative"
+                className="md:hidden text-white hover:text-blue-300 p-2 transition-colors"
                 aria-label="Toggle menu"
               >
                 {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -152,7 +127,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Right Side Menu Overlay */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
@@ -166,7 +141,7 @@ const Navbar = () => {
               onClick={toggleMenu}
             />
             
-            {/* Right Side Menu Panel */}
+            {/* Mobile Menu Panel */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -174,85 +149,64 @@ const Navbar = () => {
               transition={{ type: 'tween' }}
               className="fixed top-0 right-0 h-full w-4/5 max-w-md bg-white dark:bg-gray-900 shadow-xl z-40 p-6 overflow-y-auto"
             >
-              {/* Date and Location for mobile */}
-              <div className="md:hidden text-gray-800 dark:text-white mb-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                <div className="text-blue-500 font-medium">30 MAY 2026</div>
-                <div>AGNEW PARK • STRANRAER • SCOTLAND</div>
-              </div>
               {/* Close Button */}
               <button
                 onClick={toggleMenu}
-                className="absolute top-6 right-6 text-gray-800 dark:text-white p-2 hover:text-blue-500 dark:hover:text-blue-400 transition-colors z-50"
+                className="absolute top-6 right-6 text-gray-800 dark:text-white p-2 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
                 aria-label="Close menu"
               >
-                <X size={32} />
+                <X size={28} />
               </button>
 
               {/* Menu Content */}
-              <div className="pt-20 px-8 pb-8">
-                <ul className="space-y-6">
+              <div className="pt-16">
+                <ul className="space-y-2">
                   {menuItems.map((item, index) => (
                     <li key={item.path + index}>
                       {item.isDivider ? (
-                        <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+                        <div className="border-t border-gray-200 dark:border-gray-800 my-4"></div>
                       ) : item.isExternal ? (
                         <a
                           href={item.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center py-3 px-4 rounded-md transition-colors text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                          className="block py-3 px-4 rounded-md transition-colors text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          {item.icon}
-                          {item.label}
+                          <div className="flex items-center">
+                            {item.icon}
+                            <span>{item.label}</span>
+                          </div>
                         </a>
                       ) : (
                         <Link
                           to={item.path}
-                          className={`flex items-center py-3 px-4 rounded-md transition-colors ${
+                          className={`block py-3 px-4 rounded-md transition-colors ${
                             location.pathname === item.path
                               ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
                               : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
                           }`}
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          {item.icon}
-                          {item.label}
+                          <div className="flex items-center">
+                            {item.icon}
+                            <span>{item.label}</span>
+                          </div>
                         </Link>
                       )}
                     </li>
                   ))}
                 </ul>
-                <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 + menuItems.length * 0.05 }}
-                  className="pt-8"
-                >
+                
+                <div className="mt-6">
                   <Link
                     to="/tickets"
                     onClick={toggleMenu}
-                    className="block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-8 text-lg uppercase tracking-wider transition-colors rounded-lg text-center"
+                    className="block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-6 text-center uppercase tracking-wider transition-colors rounded-lg"
                   >
                     GET TICKETS
                   </Link>
-                </motion.div>
-
-                {/* Contact Info */}
-                <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 + (menuItems.length + 1) * 0.05 }}
-                  className="pt-8 border-t border-gray-200 dark:border-gray-800"
-                >
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">CONTACT</p>
-                  <a 
-                    href="mailto:info@agnwfestival.co.uk"
-                    className="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-                  >
-                    info@agnwfestival.co.uk
-                  </a>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           </>
