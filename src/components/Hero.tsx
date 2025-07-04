@@ -168,7 +168,7 @@ const Hero = () => {
       <div className="relative z-10 flex-1 flex flex-col justify-between">
         <div className="flex-1 flex flex-col items-center justify-center px-4 pt-8">
           {/* Logo */}
-          <div className="w-full max-w-4xl mb-4 md:mb-8">
+          <div className="w-full max-w-4xl mb-8 md:mb-16">
             <div className="transform transition-all duration-500 mb-8">
               <img 
                 src="/lovable-uploads/25c92fd8-7c33-43c5-8fff-7e74e0adea90.png" 

@@ -122,11 +122,14 @@ const LineupBar = () => {
 
   return (
     <div 
-      className="w-full py-0 relative z-20 -mt-24"
+      className="w-full py-0 relative z-40 -mt-24"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{
+        marginBottom: '-80px'
+      }}
     >
-      <div className="relative w-full max-w-full mx-auto overflow-hidden">
+      <div className="relative w-full max-w-full mx-auto overflow-hidden px-4">
         {/* Navigation Arrows */}
         <button 
           onClick={() => {
@@ -147,7 +150,8 @@ const LineupBar = () => {
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
             width: '100%',
-            height: '300px' // Fixed height for consistent layout
+            height: '280px',
+            padding: '20px 0 60px'
           }}
         >
           {getVisibleArtists().map(({ name, image, index, position }) => {
