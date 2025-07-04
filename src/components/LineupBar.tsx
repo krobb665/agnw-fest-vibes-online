@@ -151,8 +151,8 @@ const LineupBar = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden py-12 bg-black px-0">
-      <div className="w-full max-w-[1400px] mx-auto px-4">
+    <div className="w-full overflow-hidden py-8 px-0 bg-transparent">
+      <div className="w-full max-w-full mx-auto px-0">
         
         <div className="relative group">
           {/* Navigation Arrows */}
@@ -190,12 +190,12 @@ const LineupBar = () => {
                 <div 
                   key={`${artist.name}-${i}`}
                   ref={el => itemRefs.current[artist.index] = el}
-                  className={`relative flex-shrink-0 transition-all duration-500 ease-out mx-1 ${
-                    artist.isSelected ? 'scale-110 z-10' : 'scale-95 z-1 hover:scale-100'
+                  className={`relative flex-shrink-0 transition-all duration-500 ease-out mx-2 ${
+                    artist.isSelected ? 'scale-105 z-10' : 'scale-95 z-1 hover:scale-100'
                   }`}
                   style={{
-                    width: 'calc(33.333% - 8px)',
-                    minWidth: '260px',
+                    width: 'calc(25% - 16px)',
+                    minWidth: '220px',
                     filter: artist.isSelected ? 'none' : 'brightness(0.85)'
                   }}
                   onClick={() => setCurrentIndex(artist.index)}
